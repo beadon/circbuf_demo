@@ -1,9 +1,10 @@
-D G "__PCH__" 0 0 ""5.116""
-D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""06-Dec-23""
-D G "__TIME__" 0 0 ""10:51:07""
-D G "_UNICODE" 0 0 ""?""
-D G "__EVAL" 0 0 ""?"" "Standard Header file for the PIC18F57Q84 device ////////////////"
+F N "MAIN" 0 49 ""
+D G "__PCH__" 0 58 ""5.116""
+D G "__DEVICE__" 0 58 "5784"
+D G "__DATE__" 0 58 ""06-Dec-23""
+D G "__TIME__" 0 58 ""11:03:30""
+D G "_UNICODE" 0 58 ""?""
+D G "__EVAL" 0 58 ""?"" "Standard Header file for the PIC18F57Q84 device ////////////////"
 c L "set_tris_a" 2 3 32 "FUNCTION"
 F N "set_tris_a" 2 86 ""
 V L "value" 2 86 "int8" `55 
@@ -278,7 +279,7 @@ F B "set_timer0" 2 258 "void(int16 value)" `175
 F N "get_timer0" 2 259 ""
 F B "get_timer0" 2 259 "int8()" `177 
 F N "get_timer0" 2 260 ""
-f G "get_timer0" 2 260 "int16()" `178 
+f G "get_timer0" 2 260 "int16(int8 mode,int8 prescaler)" `178 
 F N "setup_counters" 2 261 ""
 V L "mode" 2 261 "int8" `179 
 V L "prescaler" 2 261 "int8" `180 
@@ -292,7 +293,7 @@ F B "set_rtcc" 2 263 "void(int16 value)" `183
 F N "get_rtcc" 2 264 ""
 F B "get_rtcc" 2 264 "int8()" `185 
 F N "get_rtcc" 2 265 ""
-f G "get_rtcc" 2 265 "int16()" `186  "Constants used for SETUP_TIMER_0() first parameter are:"
+f G "get_rtcc" 2 265 "int16(int16 mode)" `186  "Constants used for SETUP_TIMER_0() first parameter are:"
 D G "T0_INTERNAL" 2 267 "0x8040"
 D G "T0_HFINTOSC" 2 268 "0x8060"
 D G "T0_LFINTOSC" 2 269 "0x8080"
@@ -2590,15 +2591,15 @@ F N "read_adc" 2 2321 ""
 f G "read_adc" 2 2321 "int16()" `810 
 F N "read_adc" 2 2322 ""
 V L "mode" 2 2322 "int8" `811 
-f G "read_adc" 2 2322 "int16(int8 mode)" `810 
+f G "read_adc" 2 2322 "int16(int8 mode,int8 which)" `810 
 F N "adc_done" 2 2323 ""
-F B "adc_done" 2 2323 "int8(int8 mode)" `810 
+F B "adc_done" 2 2323 "int8(int8 mode,int8 which)" `810 
 F N "adc_read" 2 2324 ""
 V L "which" 2 2324 "int8" `812 
 F B "adc_read" 2 2324 "int8(int8 which)" `811 
 F N "adc_read" 2 2325 ""
 V L "which" 2 2325 "int8" `814 
-f G "adc_read" 2 2325 "int16(int8 which)" `813 
+f G "adc_read" 2 2325 "int16(int8 which,int8 value)" `813 
 F N "adc_write" 2 2326 ""
 V L "which" 2 2326 "int8" `814 
 V L "value" 2 2326 "int8" `815 
@@ -3180,9 +3181,9 @@ F B "i2c_transfer_in" 2 2664 "int8(int8 stream,int8 address,*int8 rData,int8 rCo
 F N "spi_xfer" 2 2667 ""
 F B "spi_xfer" 2 2667 "int8()" `1125 
 F N "spi_xfer" 2 2668 ""
-f G "spi_xfer" 2 2668 "int16()" `1126 
+f G "spi_xfer" 2 2668 "int16(int8 data)" `1126 
 F N "spi_xfer" 2 2669 ""
-f G "spi_xfer" 2 2669 "int32()" `1126 
+f G "spi_xfer" 2 2669 "int32(int8 data)" `1126 
 F N "spi_xfer" 2 2670 ""
 V L "data" 2 2670 "int8" `1127 
 F B "spi_xfer" 2 2670 "int8(int8 data)" `1126 
@@ -3262,18 +3263,18 @@ F B "spi_prewrite" 2 2689 "void(int8 ,int32 data)" `1179
 F N "spi_xfer_in" 2 2690 ""
 F B "spi_xfer_in" 2 2690 "int8()" `1182 
 F N "spi_xfer_in" 2 2691 ""
-f G "spi_xfer_in" 2 2691 "int16()" `1183 
+f G "spi_xfer_in" 2 2691 "int16(int8 bits)" `1183 
 F N "spi_xfer_in" 2 2692 ""
-f G "spi_xfer_in" 2 2692 "int32()" `1183 
+f G "spi_xfer_in" 2 2692 "int32(int8 bits)" `1183 
 F N "spi_xfer_in" 2 2693 ""
 V L "bits" 2 2693 "int8" `1184 
 F B "spi_xfer_in" 2 2693 "int8(int8 bits)" `1183 
 F N "spi_xfer_in" 2 2694 ""
 V L "bits" 2 2694 "int8" `1186 
-f G "spi_xfer_in" 2 2694 "int16(int8 bits)" `1185 
+f G "spi_xfer_in" 2 2694 "int16(int8 bits,int8 bits)" `1185 
 F N "spi_xfer_in" 2 2695 ""
 V L "bits" 2 2695 "int8" `1186 
-f G "spi_xfer_in" 2 2695 "int32(int8 bits)" `1185 
+f G "spi_xfer_in" 2 2695 "int32(int8 bits,int8 bits)" `1185 
 F N "spi_xfer_in" 2 2696 ""
 V L "stream" 2 2696 "int8" `1186 
 V L "bits" 2 2696 "int8" `1187 
@@ -3281,11 +3282,11 @@ F B "spi_xfer_in" 2 2696 "int8(int8 stream,int8 bits)" `1185
 F N "spi_xfer_in" 2 2697 ""
 V L "stream" 2 2697 "int8" `1186 
 V L "bits" 2 2697 "int8" `1190 
-f G "spi_xfer_in" 2 2697 "int16(int8 stream,int8 bits)" `1188 
+f G "spi_xfer_in" 2 2697 "int16(int8 stream,int8 bits,int16 count)" `1188 
 F N "spi_xfer_in" 2 2698 ""
 V L "stream" 2 2698 "int8" `1186 
 V L "bits" 2 2698 "int8" `1190 
-f G "spi_xfer_in" 2 2698 "int32(int8 stream,int8 bits)" `1188 
+f G "spi_xfer_in" 2 2698 "int32(int8 stream,int8 bits,int16 count)" `1188 
 F N "spi_transfer" 2 2699 ""
 V L "wData" 2 2699 "*int8" `1189 
 V L "rData" 2 2699 "*int8" `1190 
@@ -3364,9 +3365,9 @@ F B "rtos_stats" 2 2723 "void(int8 task,*int8 stat)" `1237  "#use timer() Protot
 F N "get_ticks" 2 2726 ""
 F B "get_ticks" 2 2726 "int8()" `1240 
 F N "get_ticks" 2 2727 ""
-f G "get_ticks" 2 2727 "int16()" `1241 
+f G "get_ticks" 2 2727 "int16(int8 stream)" `1241 
 F N "get_ticks" 2 2728 ""
-f G "get_ticks" 2 2728 "int32()" `1241 
+f G "get_ticks" 2 2728 "int32(int8 stream)" `1241 
 F N "get_ticks" 2 2729 ""
 V L "stream" 2 2729 "int8" `1242 
 F B "get_ticks" 2 2729 "int8(int8 stream)" `1241 
@@ -3923,145 +3924,144 @@ F N "strupr" 4 420 ""
 V L "s" 4 420 "*int8" `1436 
 F G "strupr" 4 421 "*int8(*int8 s)" `1435 
 V L "p" 4 422 "*int8" `1437 
-C G "" 7 1 1 "*"
-D G "_UTIL_CIRCBUF_H_" 7 8 ""
-D G "_STDINT" 8 19 ""
-T G "int8_t" 8 23 "sint8" `1438 
-T G "uint8_t" 8 24 "int8" `1439 
-T G "int16_t" 8 25 "sint16" `1440 
-T G "uint16_t" 8 26 "int16" `1441 
-T G "int32_t" 8 27 "sint32" `1442 
-T G "uint32_t" 8 28 "int32" `1443 
-D G "INT8_MAX" 8 37 " (127)"
-D G "INT8_MIN" 8 38 " (-128)"
-D G "UINT8_MAX" 8 39 " (255)"
-D G "INT16_MAX" 8 41 " (32767)"
-D G "INT16_MIN" 8 42 " (-32768)"
-D G "UINT16_MAX" 8 43 " (65535)"
-D G "INT32_MAX" 8 45 " (2147483647)"
-D G "INT32_MIN" 8 46 " (-2147483648)"
-D G "UINT32_MAX" 8 47 " (4294967295)"
-T G "int_least8_t" 8 61 "sint8" `1444 
-T G "uint_least8_t" 8 62 "int8" `1445 
-T G "int_least16_t" 8 63 "sint16" `1446 
-T G "uint_least16_t" 8 64 "int16" `1447 
-T G "int_least32_t" 8 65 "sint32" `1448 
-T G "uint_least32_t" 8 66 "int32" `1449 
-D G "INT_LEAST8_MAX" 8 75 " (127)"
-D G "INT_LEAST8_MIN" 8 76 " (-128)"
-D G "UINT_LEAST8_MAX" 8 77 " (255)"
-D G "INT_LEAST16_MAX" 8 79 " (32767)"
-D G "INT_LEAST16_MIN" 8 80 " (-32768)"
-D G "UINT_LEAST16_MAX" 8 81 " (65535)"
-D G "INT_LEAST32_MAX" 8 83 " (2147483647)"
-D G "INT_LEAST32_MIN" 8 84 " (-2147483648)"
-D G "UINT_LEAST32_MAX" 8 85 " (4294967295)"
-T G "int_fast8_t" 8 112 "sint8" `1450 
-T G "uint_fast8_t" 8 113 "int8" `1451 
-D G "INT_FAST8_MAX" 8 114 " (127)"
-D G "INT_FAST8_MIN" 8 115 " (-128)"
-D G "UINT_FAST8_MAX" 8 116 " (255)"
-T G "int_fast16_t" 8 117 "sint16" `1452 
-T G "uint_fast16_t" 8 118 "int16" `1453 
-T G "int_fast32_t" 8 121 "sint32" `1454 
-T G "uint_fast32_t" 8 122 "int32" `1455 
-D G "INT_FAST16_MAX" 8 124 " (32767)"
-D G "INT_FAST16_MIN" 8 125 " (-32768)"
-D G "UINT_FAST16_MAX" 8 126 " (65535)"
-D G "INT_FAST32_MAX" 8 128 " (2147483647)"
-D G "INT_FAST32_MIN" 8 129 " (-2147483648)"
-D G "UINT_FAST32_MAX" 8 130 " (4294967295)"
-T G "uintptr_t" 8 148 "int16" `1456 
-T G "intptr_t" 8 149 "sint16" `1457 
-D G "INT8_C" 8 152 "(val) ((int8_t)val)"
-D G "UINT8_C" 8 153 "(val) ((uint8_t)val)"
-D G "INT16_C" 8 154 "(val) ((int16_t)val)"
-D G "UINT16_C" 8 155 "(val) ((uint16_t)val)"
-D G "INT32_C" 8 156 "(val) ((int32_t)val)"
-D G "UINT32_C" 8 157 "(val) ((uint32_t)val)"
-T G "intmax_t" 8 181 "sint32" `1458 
-T G "uintmax_t" 8 182 "int32" `1459 
-D G "INTMAXN_MAX" 8 184 " (2147483647)"
-D G "INTMAXN_MIN" 8 185 " (-2147483648)"
-D G "UINTMAXN_MAX" 8 186 " (4294967295)"
-D G "INTMAX_C" 8 188 "(value) ((signed int32)val)"
-D G "UINTMAX_C" 8 189 "(value) ((unsigned int32)val)"
-C G "" 7 12 1 "*"
-T G "circbuf_t" 7 19 "{*int8 buffer,int8 push_count,int8 pop_count,int8 size,int8 element_size}" `1466 
-D G "__CIRCBUF_VAR_DEF" 7 21 "(type,buf,sz)      Š   type buf ## _circbuf_data[sz];         Š   circbuf_t buf = {            Š      .buffer = buf ## _circbuf_data,      Š      .push_count = 0,         Š      .pop_count = 0,            Š      .size = sz,            Š      .element_size = sizeof(type)      Š   };"
-F N "__circbuf_push" 7 31 ""
-V L "circbuf" 7 31 " *" `1468 
-V L "elem" 7 31 "*void" `1469 
-f G "__circbuf_push" 7 31 "int8( * circbuf,*void elem)" `1467 
-F N "__circbuf_pop" 7 32 ""
-V L "circbuf" 7 32 " *" `1471 
-V L "elem" 7 32 "*void" `1472 
-V L "read_only" 7 32 "int8" `1473 
-f G "__circbuf_pop" 7 32 "int8( * circbuf,*void elem,int8 read_only)" `1470 
-F N "__circbuf_free_space" 7 33 ""
-V L "circbuf" 7 33 " *" `1475 
-f G "__circbuf_free_space" 7 33 "int8( * circbuf)" `1474  "-------------------------------------------------------------------------- *"
-C L "__circbuf_free_space" 7 36 1 "*"
-C L "__circbuf_free_space" 7 36 2 "*"
-C L "__circbuf_free_space" 7 42 1 "*"
-C L "__circbuf_free_space" 7 42 1 "*"
-C L "__circbuf_free_space" 7 42 1 "*"
-C L "__circbuf_free_space" 7 42 1 "*"
-C L "__circbuf_free_space" 7 42 1 "*"
-D G "CIRCBUF_DEF" 7 51 "(type,buf,size)         Š   __CIRCBUF_VAR_DEF(type, buf, size)      Š   int buf ## _push_refd(type *pt)         Š   {                  Š      return __circbuf_push(&buf, pt);   Š   }                  Š   int buf ## _pop_refd(type *pt)         Š   {                  Š      return __circbuf_pop(&buf, pt, 0);   Š   }                  Š   int buf ## _peek_refd(type *pt)         Š   {                  Š      return __circbuf_pop(&buf, pt, 1);   Š   }"
-C L "__circbuf_free_space" 7 66 1 "*"
-C L "__circbuf_free_space" 7 66 1 "*"
-D G "CIRCBUF_FLUSH" 7 71 "(buf)            Š   do {                  Š      buf.push_count = 0;         Š      buf.pop_count = 0;         Š   } while(0)"
-C L "__circbuf_free_space" 7 77 1 "*"
-C L "__circbuf_free_space" 7 77 1 "*"
-C L "__circbuf_free_space" 7 77 1 "*"
-C L "__circbuf_free_space" 7 77 1 "*"
-C L "__circbuf_free_space" 7 77 1 "*"
-D G "CIRCBUF_PUSH" 7 86 "(buf,elem)             buf ## _push_refd(elem)"
-C L "__circbuf_free_space" 7 88 1 "*"
-C L "__circbuf_free_space" 7 88 1 "*"
-C L "__circbuf_free_space" 7 88 1 "*"
-C L "__circbuf_free_space" 7 88 1 "*"
-C L "__circbuf_free_space" 7 88 1 "*"
-D G "CIRCBUF_PEEK" 7 97 "(buf,elem)             buf ## _peek_refd(elem)"
-C L "__circbuf_free_space" 7 99 1 "*"
-C L "__circbuf_free_space" 7 99 1 "*"
-C L "__circbuf_free_space" 7 99 1 "*"
-C L "__circbuf_free_space" 7 99 1 "*"
-C L "__circbuf_free_space" 7 99 1 "*"
-C L "__circbuf_free_space" 7 99 1 "*"
-D G "CIRCBUF_POP" 7 109 "(buf,elem)              buf ## _pop_refd(elem)"
-C L "__circbuf_free_space" 7 111 1 "*"
-C L "__circbuf_free_space" 7 111 1 "*"
-C L "__circbuf_free_space" 7 111 1 "*"
-D G "CIRCBUF_FS" 7 118 "(buf)                     __circbuf_free_space(&buf)"
-C L "__circbuf_free_space" 7 111 1 "FUNCTION"
+D G "_STDINT" 7 19 ""
+T G "int8_t" 7 23 "sint8" `1438 
+T G "uint8_t" 7 24 "int8" `1439 
+T G "int16_t" 7 25 "sint16" `1440 
+T G "uint16_t" 7 26 "int16" `1441 
+T G "int32_t" 7 27 "sint32" `1442 
+T G "uint32_t" 7 28 "int32" `1443 
+D G "INT8_MAX" 7 37 " (127)"
+D G "INT8_MIN" 7 38 " (-128)"
+D G "UINT8_MAX" 7 39 " (255)"
+D G "INT16_MAX" 7 41 " (32767)"
+D G "INT16_MIN" 7 42 " (-32768)"
+D G "UINT16_MAX" 7 43 " (65535)"
+D G "INT32_MAX" 7 45 " (2147483647)"
+D G "INT32_MIN" 7 46 " (-2147483648)"
+D G "UINT32_MAX" 7 47 " (4294967295)"
+T G "int_least8_t" 7 61 "sint8" `1444 
+T G "uint_least8_t" 7 62 "int8" `1445 
+T G "int_least16_t" 7 63 "sint16" `1446 
+T G "uint_least16_t" 7 64 "int16" `1447 
+T G "int_least32_t" 7 65 "sint32" `1448 
+T G "uint_least32_t" 7 66 "int32" `1449 
+D G "INT_LEAST8_MAX" 7 75 " (127)"
+D G "INT_LEAST8_MIN" 7 76 " (-128)"
+D G "UINT_LEAST8_MAX" 7 77 " (255)"
+D G "INT_LEAST16_MAX" 7 79 " (32767)"
+D G "INT_LEAST16_MIN" 7 80 " (-32768)"
+D G "UINT_LEAST16_MAX" 7 81 " (65535)"
+D G "INT_LEAST32_MAX" 7 83 " (2147483647)"
+D G "INT_LEAST32_MIN" 7 84 " (-2147483648)"
+D G "UINT_LEAST32_MAX" 7 85 " (4294967295)"
+T G "int_fast8_t" 7 112 "sint8" `1450 
+T G "uint_fast8_t" 7 113 "int8" `1451 
+D G "INT_FAST8_MAX" 7 114 " (127)"
+D G "INT_FAST8_MIN" 7 115 " (-128)"
+D G "UINT_FAST8_MAX" 7 116 " (255)"
+T G "int_fast16_t" 7 117 "sint16" `1452 
+T G "uint_fast16_t" 7 118 "int16" `1453 
+T G "int_fast32_t" 7 121 "sint32" `1454 
+T G "uint_fast32_t" 7 122 "int32" `1455 
+D G "INT_FAST16_MAX" 7 124 " (32767)"
+D G "INT_FAST16_MIN" 7 125 " (-32768)"
+D G "UINT_FAST16_MAX" 7 126 " (65535)"
+D G "INT_FAST32_MAX" 7 128 " (2147483647)"
+D G "INT_FAST32_MIN" 7 129 " (-2147483648)"
+D G "UINT_FAST32_MAX" 7 130 " (4294967295)"
+T G "uintptr_t" 7 148 "int16" `1456 
+T G "intptr_t" 7 149 "sint16" `1457 
+D G "INT8_C" 7 152 "(val) ((int8_t)val)"
+D G "UINT8_C" 7 153 "(val) ((uint8_t)val)"
+D G "INT16_C" 7 154 "(val) ((int16_t)val)"
+D G "UINT16_C" 7 155 "(val) ((uint16_t)val)"
+D G "INT32_C" 7 156 "(val) ((int32_t)val)"
+D G "UINT32_C" 7 157 "(val) ((uint32_t)val)"
+T G "intmax_t" 7 181 "sint32" `1458 
+T G "uintmax_t" 7 182 "int32" `1459 
+D G "INTMAXN_MAX" 7 184 " (2147483647)"
+D G "INTMAXN_MIN" 7 185 " (-2147483648)"
+D G "UINTMAXN_MAX" 7 186 " (4294967295)"
+D G "INTMAX_C" 7 188 "(value) ((signed int32)val)"
+D G "UINTMAX_C" 7 189 "(value) ((unsigned int32)val)"
+T G "can_rx_frame_t" 0 10 "{uint8_t can_header,uint8_t[8] data,uint8_t errors,uint8_t counter}" `1465  "* Copyright (c) 2020-2021 Siddharth Chandrasekaran <sidcha.dev@gmail.com>"
+D G "_UTIL_CIRCBUF_H_" 8 8 ""
+C G "" 8 12 1 "*"
+T G "circbuf_t" 8 19 "{*int8 buffer,int8 push_count,int8 pop_count,int8 size,int8 element_size}" `1472 
+D G "__CIRCBUF_VAR_DEF" 8 21 "(type,buf,sz)      Š   type buf ## _circbuf_data[sz];         Š   circbuf_t buf = {            Š      .buffer = buf ## _circbuf_data,      Š      .push_count = 0,         Š      .pop_count = 0,            Š      .size = sz,            Š      .element_size = sizeof(type)      Š   };"
+F N "__circbuf_push" 8 31 ""
+V L "circbuf" 8 31 " *" `1474 
+V L "elem" 8 31 "*void" `1475 
+f G "__circbuf_push" 8 31 "int8( * circbuf,*void elem)" `1473 
+F N "__circbuf_pop" 8 32 ""
+V L "circbuf" 8 32 " *" `1477 
+V L "elem" 8 32 "*void" `1478 
+V L "read_only" 8 32 "int8" `1479 
+f G "__circbuf_pop" 8 32 "int8( * circbuf,*void elem,int8 read_only)" `1476 
+F N "__circbuf_free_space" 8 33 ""
+V L "circbuf" 8 33 " *" `1481 
+f G "__circbuf_free_space" 8 33 "int8( * circbuf)" `1480  "-------------------------------------------------------------------------- *"
+C L "__circbuf_free_space" 8 36 1 "*"
+C L "__circbuf_free_space" 8 36 2 "*"
+C L "__circbuf_free_space" 8 42 1 "*"
+C L "__circbuf_free_space" 8 42 1 "*"
+C L "__circbuf_free_space" 8 42 1 "*"
+C L "__circbuf_free_space" 8 42 1 "*"
+C L "__circbuf_free_space" 8 42 1 "*"
+D G "CIRCBUF_DEF" 8 51 "(type,buf,size)         Š   __CIRCBUF_VAR_DEF(type, buf, size)      Š   int buf ## _push_refd(type *pt)         Š   {                  Š      return __circbuf_push(&buf, pt);   Š   }                  Š   int buf ## _pop_refd(type *pt)         Š   {                  Š      return __circbuf_pop(&buf, pt, 0);   Š   }                  Š   int buf ## _peek_refd(type *pt)         Š   {                  Š      return __circbuf_pop(&buf, pt, 1);   Š   }"
+C L "__circbuf_free_space" 8 66 1 "*"
+C L "__circbuf_free_space" 8 66 1 "*"
+D G "CIRCBUF_FLUSH" 8 71 "(buf)            Š   do {                  Š      buf.push_count = 0;         Š      buf.pop_count = 0;         Š   } while(0)"
+C L "__circbuf_free_space" 8 77 1 "*"
+C L "__circbuf_free_space" 8 77 1 "*"
+C L "__circbuf_free_space" 8 77 1 "*"
+C L "__circbuf_free_space" 8 77 1 "*"
+C L "__circbuf_free_space" 8 77 1 "*"
+D G "CIRCBUF_PUSH" 8 86 "(buf,elem)             buf ## _push_refd(elem)"
+C L "__circbuf_free_space" 8 88 1 "*"
+C L "__circbuf_free_space" 8 88 1 "*"
+C L "__circbuf_free_space" 8 88 1 "*"
+C L "__circbuf_free_space" 8 88 1 "*"
+C L "__circbuf_free_space" 8 88 1 "*"
+D G "CIRCBUF_PEEK" 8 97 "(buf,elem)             buf ## _peek_refd(elem)"
+C L "__circbuf_free_space" 8 99 1 "*"
+C L "__circbuf_free_space" 8 99 1 "*"
+C L "__circbuf_free_space" 8 99 1 "*"
+C L "__circbuf_free_space" 8 99 1 "*"
+C L "__circbuf_free_space" 8 99 1 "*"
+C L "__circbuf_free_space" 8 99 1 "*"
+D G "CIRCBUF_POP" 8 109 "(buf,elem)              buf ## _pop_refd(elem)"
+C L "__circbuf_free_space" 8 111 1 "*"
+C L "__circbuf_free_space" 8 111 1 "*"
+C L "__circbuf_free_space" 8 111 1 "*"
+D G "CIRCBUF_FS" 8 118 "(buf)                     __circbuf_free_space(&buf)"
+C L "__circbuf_free_space" 8 111 1 "FUNCTION"
 C L "__circbuf_free_space" 9 1 1 "*"
 C L "__circbuf_free_space" 9 1 1 "*"
 C L "__circbuf_free_space" 4 2 7 "FUNCTION"
-C L "__circbuf_free_space" 8 2 12 "FUNCTION"
-C L "__circbuf_free_space" 7 1 1 "*"
-C L "__circbuf_free_space" 7 1 2 "*"
+C L "__circbuf_free_space" 7 2 12 "FUNCTION"
+C L "__circbuf_free_space" 8 1 1 "*"
+C L "__circbuf_free_space" 8 1 2 "*"
 F N "__circbuf_pop" 9 12 ""
-V L "circ_buf" 9 12 " *" `1471 
-V L "elem" 9 12 "*void" `1472 
-V L "read_only" 9 12 "int8" `1479 
-F G "__circbuf_pop" 9 13 "int8( * circ_buf,*void elem,int8 read_only)" `1470 
-V L "total" 9 14 "int16_t" `1476 
-V L "tail" 9 15 "*int8" `1477 
+V L "circ_buf" 9 12 " *" `1477 
+V L "elem" 9 12 "*void" `1478 
+V L "read_only" 9 12 "int8" `1485 
+F G "__circbuf_pop" 9 13 "int8( * circ_buf,*void elem,int8 read_only)" `1476 
+V L "total" 9 14 "int16_t" `1482 
+V L "tail" 9 15 "*int8" `1483 
 C L "__circbuf_pop" 9 22 1 "FUNCTION"
 F N "__circbuf_push" 9 41 ""
-V L "circ_buf" 9 41 " *" `1468 
-V L "elem" 9 41 "*void" `1483 
-F G "__circbuf_push" 9 42 "int8( * circ_buf,*void elem)" `1467 
-V L "total" 9 43 "int16_t" `1481 
-V L "head" 9 44 "*int8" `1482 
+V L "circ_buf" 9 41 " *" `1474 
+V L "elem" 9 41 "*void" `1489 
+F G "__circbuf_push" 9 42 "int8( * circ_buf,*void elem)" `1473 
+V L "total" 9 43 "int16_t" `1487 
+V L "head" 9 44 "*int8" `1488 
 C L "__circbuf_push" 9 22 1 "FUNCTION"
 F N "__circbuf_free_space" 9 62 ""
-V L "circ_buf" 9 62 " *" `1484 
-F G "__circbuf_free_space" 9 63 "int8( * circ_buf)" `1474 
-V L "total" 9 64 "int16_t" `1483 
-T G "can_rx_frame_t" 0 12 "{uint8_t can_header,uint8_t[8] data,uint8_t errors,uint8_t counter}" `1489 
+V L "circ_buf" 9 62 " *" `1490 
+F G "__circbuf_free_space" 9 63 "int8( * circ_buf)" `1480 
+V L "total" 9 64 "int16_t" `1489 
 V G "my_circ_buf_circbuf_data" 0 15 "can_rx_frame_t[32]" `1490 
 V G "my_circ_buf" 0 15 "circbuf_t" `1491 
 F N "buffer" 0 15 ""

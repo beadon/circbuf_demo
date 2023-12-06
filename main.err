@@ -1,4 +1,4 @@
-Compiling C:\Users\beadon\Documents\GitHub\circbuf_demo\main on 06-Dec-23 at 10:51
+Compiling C:\Users\beadon\Documents\GitHub\circbuf_demo\main on 06-Dec-23 at 11:03
 *** Error 27 "C:\Users\beadon\Documents\GitHub\circbuf_demo\main.c" Line 15(45,46): Expression must evaluate to a constant
 *** Error 48 "C:\Users\beadon\Documents\GitHub\circbuf_demo\main.c" Line 15(45,46): Expecting a (
 *** Error 48 "C:\Users\beadon\Documents\GitHub\circbuf_demo\main.c" Line 15(45,46): Expecting a (
@@ -19,5 +19,6 @@ Compiling C:\Users\beadon\Documents\GitHub\circbuf_demo\main on 06-Dec-23 at 10:
 *** Error 43 "C:\Users\beadon\Documents\GitHub\circbuf_demo\main.c" Line 15(45,46): Expecting a declaration
 *** Error 43 "C:\Users\beadon\Documents\GitHub\circbuf_demo\main.c" Line 15(45,46): Expecting a declaration
 *** Error 28 "C:\Users\beadon\Documents\GitHub\circbuf_demo\main.c" Line 15(45,46): Expecting an identifier
-      20 Errors,  0 Warnings.
+*** Error 58 "C:\Users\beadon\Documents\GitHub\circbuf_demo\main.c" Line 37(41,42): Expecting a close paren
+      21 Errors,  0 Warnings.
 Build Failed.

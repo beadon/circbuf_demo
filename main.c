@@ -1,8 +1,6 @@
 #include <main.h>
 #include <stdio.h>
-
-#include "include/utils/circbuf.h"
-#include "src/circbuf.c"
+#include <stdint.h>
 
 typedef struct {
     uint8_t can_header;
@@ -11,6 +9,8 @@ typedef struct {
     uint8_t counter;
 } can_rx_frame_t;
 
+#include "include/utils/circbuf.h"
+#include "src/circbuf.c"
 
 CIRCBUF_DEF(can_rx_frame_t, my_circ_buf, 32);
 
@@ -18,7 +18,7 @@ CIRCBUF_DEF(can_rx_frame_t, my_circ_buf, 32);
 
 #use rtos(timer=0,minor_cycle=1ms)
 
-#task(rate=100ms,max=1ms,enabled=TRUE)
+#task(rate=1000ms,max=1ms,enabled=TRUE)
 int16_t application();
 
 int16_t application()
@@ -34,7 +34,7 @@ int16_t application()
         return -1;
     }
 
-    if (my_circ_buf_pop_refd(&out_frame)) {
+    if (my_circ_buf_pop_refd(&out_frame,1)) {
         printf("CB is empty\n");
         return -1;
     }

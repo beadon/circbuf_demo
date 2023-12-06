@@ -1,0 +1,2258 @@
+CCS PCH C Compiler, Version 5.116, 749               06-Dec-23 10:22
+
+               Filename:   C:\Users\beadon\Documents\GitHub\RelaySequencer\utilities\ringbuf\sandbox_ring\main.lst
+
+               ROM used:   1054 bytes (1%)
+                           Largest free fragment is 65536
+               RAM used:   63 (0%) at main() level
+                           74 (1%) worst case
+               Stack used: 1 locations (0 in main + 1 for interrupts)
+               Stack size: 127
+
+*
+00000:  GOTO   02B6
+*
+00008:  MOVFF  500,504
+0000C:  MOVFF  501,505
+00010:  MOVFF  502,506
+00014:  CLRF   507
+00016:  MOVFF  503,508
+0001A:  MOVLB  0
+0001C:  MOVFF  4F5,509
+00020:  MOVFF  4F6,50A
+00024:  MOVFF  4F7,50B
+00028:  MOVFF  4F8,50C
+0002C:  BTFSS  4A2.0
+0002E:  GOTO   0038
+00032:  BTFSC  4B2.0
+00034:  GOTO   0074
+00038:  MOVFF  509,4F5
+0003C:  MOVFF  50A,4F6
+00040:  MOVFF  50B,4F7
+00044:  MOVFF  50C,4F8
+00048:  MOVFF  504,500
+0004C:  MOVFF  505,501
+00050:  MOVFF  506,502
+00054:  BSF    507.7
+00056:  MOVFF  508,503
+0005A:  RETFIE 1
+.................... #include <main.h>
+.................... #include <18F57Q84.h>
+.................... //////////// Standard Header file for the PIC18F57Q84 device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+*
+000AE:  BCF    4B2.0
+000B0:  MOVLB  0
+000B2:  GOTO   0038
+.................... #device PIC18F57Q84
+*
+0005C:  CLRF   4F7
+0005E:  ADDLW  70
+00060:  MOVWF  4F6
+00062:  MOVLW  00
+00064:  ADDWFC 4F7,F
+00066:  MOVLW  00
+00068:  MOVWF  4F8
+0006A:  TBLRD*+
+0006C:  MOVF   4F5,W
+0006E:  RETURN 0
+00070:  DATA 25,05
+00072:  DATA 32,05
+00074:  MOVLW  05
+00076:  MOVWF  4EA
+00078:  MOVLW  1D
+0007A:  MOVWF  4E9
+0007C:  MOVF   51F,W
+0007E:  ADDWF  4E9,F
+00080:  MOVLW  00
+00082:  ADDWFC 4EA,F
+00084:  MOVLB  2
+00086:  MOVFF  2B2,521
+0008A:  MOVFF  2A1,4EF
+0008E:  BTFSS  521.1
+00090:  BRA    009A
+00092:  BCF    xAB.4
+00094:  BSF    xB0.1
+00096:  BCF    xB2.1
+00098:  BSF    xAB.4
+0009A:  INCF   51F,F
+0009C:  MOVLW  01
+0009E:  BSF    4D8.0
+000A0:  SUBFWB 51F,W
+000A2:  BC    00A6
+000A4:  CLRF   51F
+000A6:  MOVF   520,W
+000A8:  SUBWF  51F,W
+000AA:  BNZ   00AE
+000AC:  BSF    523.1
+*
+00108:  TBLRD*+
+0010A:  MOVFF  4F6,542
+0010E:  MOVFF  4F7,543
+00112:  MOVFF  4F8,544
+00116:  MOVF   4F5,W
+00118:  BTFSS  4B2.1
+0011A:  BRA    0118
+0011C:  MOVLB  2
+0011E:  MOVWF  xA3
+00120:  MOVFF  542,4F6
+00124:  MOVFF  543,4F7
+00128:  MOVFF  544,4F8
+0012C:  DECFSZ 541,F
+0012E:  BRA    0132
+00130:  BRA    0136
+00132:  MOVLB  0
+00134:  BRA    0108
+00136:  MOVLB  0
+00138:  GOTO   0278 (RETURN)
+0013C:  MOVF   548,W
+0013E:  CLRF   501
+00140:  SUBWF  547,W
+00142:  BC    014A
+00144:  MOVFF  547,500
+00148:  BRA    0162
+0014A:  CLRF   500
+0014C:  MOVLW  08
+0014E:  MOVWF  549
+00150:  RLCF   547,F
+00152:  RLCF   500,F
+00154:  MOVF   548,W
+00156:  SUBWF  500,W
+00158:  BTFSC  4D8.0
+0015A:  MOVWF  500
+0015C:  RLCF   501,F
+0015E:  DECFSZ 549,F
+00160:  BRA    0150
+00162:  RETURN 0
+00164:  MOVLW  20
+00166:  BTFSS  542.4
+00168:  MOVLW  30
+0016A:  MOVWF  543
+0016C:  MOVFF  541,500
+00170:  BTFSS  541.7
+00172:  BRA    0184
+00174:  COMF   500,F
+00176:  INCF   500,F
+00178:  MOVFF  500,541
+0017C:  MOVLW  2D
+0017E:  MOVWF  543
+00180:  BSF    542.7
+00182:  BSF    542.0
+00184:  MOVF   501,W
+00186:  MOVFF  541,547
+0018A:  MOVLW  64
+0018C:  MOVWF  548
+0018E:  RCALL  013C
+00190:  MOVFF  500,541
+00194:  MOVLW  30
+00196:  ADDWF  501,W
+00198:  MOVWF  544
+0019A:  MOVFF  541,547
+0019E:  MOVLW  0A
+001A0:  MOVWF  548
+001A2:  RCALL  013C
+001A4:  MOVLW  30
+001A6:  ADDWF  500,W
+001A8:  MOVWF  546
+001AA:  MOVLW  30
+001AC:  ADDWF  501,W
+001AE:  MOVWF  545
+001B0:  MOVFF  543,500
+001B4:  MOVLW  30
+001B6:  SUBWF  544,W
+001B8:  BZ    01C2
+001BA:  BSF    542.1
+001BC:  BTFSC  542.7
+001BE:  BSF    542.2
+001C0:  BRA    01E6
+001C2:  MOVFF  543,544
+001C6:  MOVLW  20
+001C8:  MOVWF  543
+001CA:  MOVLW  30
+001CC:  SUBWF  545,W
+001CE:  BZ    01D8
+001D0:  BSF    542.0
+001D2:  BTFSC  542.7
+001D4:  BSF    542.1
+001D6:  BRA    01E6
+001D8:  BTFSS  4D8.2
+001DA:  BSF    542.0
+001DC:  BNZ   01E6
+001DE:  MOVFF  544,545
+001E2:  MOVLW  20
+001E4:  MOVWF  544
+001E6:  BTFSC  542.2
+001E8:  BRA    01F4
+001EA:  BTFSC  542.1
+001EC:  BRA    0200
+001EE:  BTFSC  542.0
+001F0:  BRA    020C
+001F2:  BRA    0218
+001F4:  MOVF   543,W
+001F6:  BTFSS  4B2.1
+001F8:  BRA    01F6
+001FA:  MOVLB  2
+001FC:  MOVWF  xA3
+001FE:  MOVLB  0
+00200:  MOVF   544,W
+00202:  BTFSS  4B2.1
+00204:  BRA    0202
+00206:  MOVLB  2
+00208:  MOVWF  xA3
+0020A:  MOVLB  0
+0020C:  MOVF   545,W
+0020E:  BTFSS  4B2.1
+00210:  BRA    020E
+00212:  MOVLB  2
+00214:  MOVWF  xA3
+00216:  MOVLB  0
+00218:  MOVF   546,W
+0021A:  BTFSS  4B2.1
+0021C:  BRA    021A
+0021E:  MOVLB  2
+00220:  MOVWF  xA3
+00222:  MOVLB  0
+00224:  GOTO   0282 (RETURN)
+*
+002A6:  DATA 63,6F
+002A8:  DATA 75,6E
+002AA:  DATA 74,20
+002AC:  DATA 69,73
+002AE:  DATA 20,3A
+002B0:  DATA 20,25
+002B2:  DATA 69,0A
+002B4:  DATA 0D,00
+.................... 
+.................... #list
+.................... 
+.................... #device ADC=12
+.................... 
+.................... #FUSES NOWDT                    //No Watch Dog Timer
+.................... 
+.................... #use delay(internal=64MHz)
+.................... 
+.................... #define LED PIN_F0
+.................... 
+.................... 
+.................... 
+.................... #include <stdio.h>
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996,2003 Custom Computer Services           ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... 
+.................... #ifndef _STDIO
+.................... #define _STDIO
+.................... #include <string.h>
+.................... ////////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996,2008 Custom Computer Services            ////
+.................... //// This source code may only be used by licensed users of the CCS C   ////
+.................... //// compiler.  This source code may only be distributed to other       ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction  ////
+.................... //// or distribution is permitted without written permission.           ////
+.................... //// Derivative programs created using this software in object code     ////
+.................... //// form are not restricted in any way.                                ////
+.................... ////////////////////////////////////////////////////////////////////////////
+.................... 
+.................... #ifndef _STRING
+.................... #define _STRING
+.................... #include <stddef.h>
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996,2003 Custom Computer Services           ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... 
+.................... #ifndef _STDDEF
+.................... 
+.................... #define _STDDEF
+.................... 
+.................... #if sizeof(unsigned int8 *)==1
+.................... #define ptrdiff_t unsigned int8
+.................... #else
+.................... #define ptrdiff_t unsigned int16
+.................... #endif
+.................... 
+.................... #if defined(__PCB__) || defined(__PCM__)
+.................... #define size_t unsigned int8
+.................... #else
+.................... #define size_t unsigned int16
+.................... #endif
+.................... #define wchar_t unsigned char
+.................... #define NULL 0
+.................... 
+.................... #define offsetof(s,f) (offsetofbit(s,f)/8)
+.................... 
+.................... #endif
+.................... 
+.................... #include <ctype.h>
+.................... ////////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996,2003 Custom Computer Services            ////
+.................... //// This source code may only be used by licensed users of the CCS C   ////
+.................... //// compiler.  This source code may only be distributed to other       ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction  ////
+.................... //// or distribution is permitted without written permission.           ////
+.................... //// Derivative programs created using this software in object code     ////
+.................... //// form are not restricted in any way.                                ////
+.................... ////////////////////////////////////////////////////////////////////////////
+.................... 
+.................... #ifndef _CTYPE
+.................... #define _CTYPE
+.................... 
+.................... #define islower(x)  isamong(x,"abcdefghijklmnopqrstuvwxyz")
+.................... #define isupper(x)  isamong(x,"ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+.................... #define isalnum(x)  isamong(x,"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
+.................... #define isalpha(x)  isamong(x,"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
+.................... #define isdigit(x)  isamong(x,"0123456789")
+.................... #define isspace(x)  ((x)==' ')
+.................... #define isxdigit(x) isamong(x,"0123456789ABCDEFabcdef")
+.................... #define iscntrl(x)  ((x)<' ')
+.................... #define isprint(x)  ((x)>=' ')
+.................... #define isgraph(x)  ((x)>' ')
+.................... #define ispunct(x)  (((x)>' ')&&!isalnum(x))
+.................... 
+.................... #endif
+.................... 
+.................... 
+.................... 
+.................... 
+.................... 
+.................... //////////////////////////////////////////////
+.................... //// Uncomment the following define to    ////
+.................... //// allow some functions to use a        ////
+.................... //// quicker algorithm, but use more ROM  ////
+.................... ////                                      ////
+.................... //// #define FASTER_BUT_MORE_ROM          ////
+.................... //////////////////////////////////////////////
+.................... 
+.................... 
+.................... 
+.................... /*Copying functions*/
+.................... /* standard template:
+....................    void *memmove(void *s1, void *s2, size_t n).
+....................    Copies max of n characters safely (not following ending '\0')
+....................    from s2 in s1; if s2 has less than n characters, appends 0 */
+.................... 
+.................... unsigned char *memmove(void *s1,void *s2,size_t n)
+.................... {
+....................    unsigned char *sc1;
+....................    unsigned char *sc2;
+....................    sc1=s1;
+....................    sc2=s2;
+....................    if(sc2<sc1 && sc1 <sc2 +n)
+....................       for(sc1+=n,sc2+=n;0<n;--n)
+....................          *--sc1=*--sc2;
+....................    else
+....................       for(;0<n;--n)
+....................          *sc1++=*sc2++;
+....................   return s1;
+....................   }
+.................... 
+.................... /* Standard template: char *strcpy(char *s1, const char *s2)
+....................    copies the string s2 including the null character to s1.
+....................    This is a compiler built in to handle the different address
+....................    spaces */
+.................... 
+.................... #define strcopy strcpy
+.................... 
+.................... /* standard template:
+....................    char *strncpy(char *s1, const char *s2, size_t n).
+....................    Copies max of n characters (not following ending '\0')
+....................    from s2 in s1; if s2 has less than n characters, appends 0 */
+.................... 
+.................... char *strncpy(char *s1, char *s2, size_t n)
+.................... {
+....................   char *s;
+.................... 
+....................   for (s = s1; n > 0 && *s2 != '\0'; n--)
+....................      *s++ = *s2++;
+....................   for (; n > 0; n--)
+....................      *s++ = '\0';
+.................... 
+....................   return(s1);
+.................... }
+.................... /***********************************************************/
+.................... 
+.................... /*concatenation functions*/
+.................... /* standard template: char *strcat(char *s1, const char *s2)
+.................... appends s2 to s1*/
+.................... 
+.................... char *strcat(char *s1, char *s2)
+.................... {
+....................    unsigned char *s;
+.................... 
+....................    for (s = s1; *s != '\0'; ++s);
+....................    while(*s2 != '\0')
+....................    {
+....................       *s = *s2;
+....................       ++s;
+....................       ++s2;
+....................    }
+.................... 
+....................    *s = '\0';
+....................    return(s1);
+.................... }
+.................... /* standard template: char *strncat(char *s1, char *s2,size_t n)
+.................... appends not more than n characters from s2 to s1*/
+.................... 
+.................... char *strncat(char *s1, char *s2, size_t n)
+.................... {
+....................    char *s;
+.................... 
+....................    for (s = s1; *s != '\0'; ++s);
+....................    while(*s2 != '\0' && 0<n)
+....................    {
+....................       *s = *s2;
+....................       ++s;
+....................       ++s2;
+....................       --n;
+....................    }
+.................... 
+....................    *s = '\0';
+....................    return(s1);
+.................... }
+.................... 
+.................... /***********************************************************/
+.................... 
+.................... 
+.................... /*comparison functions*/
+.................... /* standard template: signed int memcmp(void *s1, void *s2).
+....................    Compares s1 & s2; returns -1 if s1<s2, 0 if s1=s2, 1 if s1>s2 */
+.................... 
+.................... signed int memcmp(void * s1,void *s2,size_t n)
+.................... {
+.................... unsigned char *su1, *su2;
+.................... for(su1=s1, su2=s2; 0<n; ++su1, ++su2, --n)
+.................... {
+....................    if(*su1!=*su2)
+....................       return ((*su1<*su2)?-1:1);
+.................... }
+.................... return 0;
+.................... }
+.................... 
+.................... /* standard template: int strcmp(const char *s1, const char *s2).
+....................    Compares s1 & s2; returns -1 if s1<s2, 0 if s1=s2, 1 if s1>s2 */
+.................... 
+.................... signed int strcmp(char *s1, char *s2)
+.................... {
+....................    for (; *s1 == *s2; s1++, s2++)
+....................       if (*s1 == '\0')
+....................          return(0);
+....................    return((*s1 < *s2) ? -1: 1);
+.................... }
+.................... /* standard template: int strcoll(const char *s1, const char *s2).
+....................    Compares s1 & s2; returns -1 if s1<s2, 0 if s1=s2, 1 if s1>s2 */
+.................... 
+.................... signed int strcoll(char *s1, char *s2)
+.................... {
+....................    for (; *s1 == *s2; s1++, s2++)
+....................       if (*s1 == '\0')
+....................          return(0);
+....................    return((*s1 < *s2) ? -1: 1);
+.................... }
+.................... 
+.................... /* standard template:
+....................    int strncmp(const char *s1, const char *s2, size_t n).
+....................    Compares max of n characters (not following 0) from s1 to s2;
+....................    returns same as strcmp */
+.................... 
+.................... signed int strncmp(char *s1, char *s2, size_t n)
+.................... {
+....................    for (; n > 0; s1++, s2++, n--)
+....................       if (*s1 != *s2)
+....................          return((*s1 <*s2) ? -1: 1);
+....................       else if (*s1 == '\0')
+....................          return(0);
+....................    return(0);
+.................... }
+.................... /* standard template:
+....................    int strxfrm(const char *s1, const char *s2, size_t n).
+....................    transforms maximum of n characters from s2 and places them into s1, returns number of chars written ot s1.
+....................    if s1 is NULL and n is 0, then it returns the length of s2.*/
+.................... size_t strxfrm(char *s1, char *s2, size_t n)
+.................... {
+....................    char c;
+....................    size_t n1;
+....................    
+....................    if (!s1 && !n)
+....................       n = -1; //find length
+.................... 
+....................    n1 = 0;
+....................    
+....................    for (; n1 < n; n1++)
+....................    {
+....................       c = *s2++;
+....................       if (!c)
+....................          break;
+....................       if (s1)
+....................          *s1++ = c;
+....................    }
+.................... 
+....................   return(n1);
+.................... }
+.................... 
+.................... 
+.................... 
+.................... 
+.................... 
+.................... /***********************************************************/
+.................... /*Search functions*/
+.................... /* standard template: void *memchr(const char *s, int c).
+....................    Finds first occurrence of c in n characters of s */
+.................... 
+.................... char *memchr(void *s,unsigned int8 c,size_t n)
+.................... {
+....................    char uc;
+....................    char *su;
+....................    uc=c;
+....................    for(su=s;0<n;++su,--n)
+....................       if(*su==uc)
+....................       return su;
+....................    return NULL;
+.................... }
+.................... 
+.................... /* standard template: char *strchr(const char *s, int c).
+....................    Finds first occurrence of c in s */
+.................... 
+.................... char *strchr(char *s, char c)
+.................... {
+....................    for (; *s != c; s++)
+....................       if (*s == '\0')
+....................          return(0);
+....................    return(s);
+.................... }
+.................... /* standard template:
+....................    size_t strcspn(const char *s1, const char *s2).
+....................    Computes length of max initial segment of s1 that
+....................    consists entirely of characters NOT from s2*/
+.................... 
+.................... size_t strcspn(char *s1, char *s2)
+.................... {
+....................    char *sc1, *sc2;
+.................... 
+....................    for (sc1 = s1; *sc1 != 0; sc1++)
+....................       for (sc2 = s2; *sc2 != 0; sc2++)
+....................          if (*sc1 == *sc2)
+....................             return(sc1 - s1);
+....................    return(sc1 - s1);
+.................... }
+.................... /* standard template:
+....................    char *strpbrk(const char *s1, const char *s2).
+....................    Locates first occurence of any character from s2 in s1;
+....................    returns s1 if s2 is empty string */
+.................... 
+.................... char *strpbrk(char *s1, char *s2)
+.................... {
+....................    char *sc1, *sc2;
+.................... 
+....................    for (sc1 = s1; *sc1 != 0; sc1++)
+....................       for (sc2 = s2; *sc2 != 0; sc2++)
+....................          if (*sc1 == *sc2)
+....................             return(sc1);
+....................    return(0);
+.................... }
+.................... 
+.................... 
+.................... /* standard template: char *strrchr(const char *s, int c).
+....................    Finds last occurrence of c in s */
+.................... 
+.................... char *strrchr(char *s, char c)
+.................... {
+....................    char *p;
+.................... 
+....................    for (p = 0; ; s++)
+....................    {
+....................       if (*s == c)
+....................          p = s;
+....................       if (*s == '\0')
+....................          return(p);
+....................    }
+.................... }
+.................... /* computes length of max initial segment of s1 consisting
+....................    entirely of characters from s2 */
+.................... 
+.................... size_t strspn(char *s1, char *s2)
+.................... {
+....................    char *sc1, *sc2;
+.................... 
+....................    for (sc1 = s1; *sc1 != 0; sc1++)
+....................       for (sc2 = s2; ; sc2++)
+....................     if (*sc2 == '\0')
+....................        return(sc1 - s1);
+....................          else if (*sc1 == *sc2)
+....................             break;
+....................    return(sc1 - s1);
+.................... }
+.................... /* standard template:
+....................    char *strstr(const char *s1, const char *s2);
+....................    Locates first occurence of character sequence s2 in s1;
+....................    returns 0 if s2 is empty string
+.................... 
+....................    Uncomment #define FASTER_BUT_MORE_ROM at the top of the
+....................    file to use the faster algorithm */
+.................... char *strstr(char *s1, char *s2)
+.................... {
+....................    char *s, *t;
+.................... 
+....................    #ifdef FASTER_BUT_MORE_ROM
+....................    if (*s2 == '\0')
+....................          return(s1);
+....................    #endif
+.................... 
+....................    while (*s1)
+....................    {
+....................       for(s = s1, t = s2; *t && (*s == *t); ++s, ++t);
+.................... 
+....................       if (*t == '\0')
+....................          return s1;
+....................       ++s1;
+....................       #ifdef FASTER_BUT_MORE_ROM
+....................          while(*s1 != '\0' && *s1 != *s2)
+....................             ++s1;
+....................       #endif
+....................    }
+....................    return 0;
+.................... }
+.................... 
+.................... /* standard template: size_t strlen(const char *s).
+....................    Computes length of s1 (preceding terminating 0) */
+.................... 
+.................... size_t strlen(char *s)
+.................... {
+....................    char *sc;
+.................... 
+....................    for (sc = s; *sc != 0; sc++);
+....................    return(sc - s);
+.................... }
+.................... 
+.................... /* standard template: char *strtok(char *s1, const char *s2).
+.................... 
+....................    Finds next token in s1 delimited by a character from separator
+....................    string s2 (which can be different from call to call).  First call
+....................    starts at beginning of s1 searching for first character NOT
+....................    contained in s2; returns 0 if none is found.
+....................    If one is found, it is the start of first token (return value).
+....................    Function then searches from there for a character contained in s2.
+....................    If none is found, current token extends to end of s1, and subsequent
+....................    searches for a token will return 0.  If one is found, it is
+....................    overwritten by '\0', which terminates current token.  Function saves
+....................    pointer to following character from which next search will start.
+....................    Each subsequent call, with 0 as first argument, starts searching
+....................    from saved pointer */
+.................... 
+.................... char *strtok(char *s1, char *s2)
+.................... {
+....................    char *beg, *end;
+....................    static char *save;
+.................... 
+....................    beg = (s1)? s1: save;
+....................    beg += strspn(beg, s2);
+....................    if (*beg == '\0')
+....................       return(0);
+....................       
+....................    end = strpbrk(beg, s2);
+....................    if (end != '\0')
+....................    {
+....................       *end = '\0';
+....................       end++;
+....................       save = end;
+....................    }
+....................    else
+....................       save = beg + strlen(beg);
+....................    
+....................    return(beg);
+.................... }
+.................... 
+.................... /*****************************************************************/
+.................... /*Miscellaneous functions*/
+.................... /* standard template
+.................... maps error number in errnum to an error message string
+.................... Returns: Pointer to string
+.................... */
+.................... #ifdef _ERRNO
+.................... char * strerror(unsigned int8 errnum)
+.................... {
+.................... static unsigned char s[13];
+.................... switch( errnum)
+.................... {
+.................... case 0:
+....................    strcpy(s,"no errors");
+....................    return s;
+.................... case EDOM :
+....................    strcpy(s,"domain error");
+....................    return s;
+.................... case ERANGE:
+....................    strcpy(s,"range error");
+....................    return s;
+.................... }
+.................... }
+.................... #ENDIF
+.................... 
+.................... /* standard template: size_t stricmp(const char *s1, const char *s2).
+....................    Compares s1 to s2 ignoring case (upper vs. lower) */
+.................... 
+.................... signed int stricmp(char *s1, char *s2)
+.................... {
+....................  for(; *s1==*s2||(isalpha(*s1)&&isalpha(*s2)&&((char)*s1==(char)*s2+(char)32||(char)*s2==(char)*s1+(char)32));
+....................     s1++, s2++)
+....................     if (*s1 == '\0')
+....................        return(0);
+....................  return((*s1 < *s2) ? -1: 1);
+.................... }
+.................... 
+.................... 
+.................... /* standard template: char *strlwr(char *s).
+....................    Replaces uppercase letters by lowercase;
+....................    returns pointer to new string s */
+.................... 
+.................... char *strlwr(char *s)
+.................... {
+....................    char *p;
+.................... 
+....................    for (p = s; *p != '\0'; p++)
+....................       if (*p >= 'A' && *p <='Z')
+....................          *p += 'a' - 'A';
+....................    return(s);
+.................... }
+.................... 
+.................... /* standard template: char *strupr(char *s).
+....................    Replaces lowercase letters by upercase;
+....................    returns pointer to new string s */
+.................... 
+.................... char *strupr(char *s)
+.................... {
+....................    char *p;
+.................... 
+....................    for (p = s; *p != '\0'; p++)
+....................       if (*p >= 'a' && *p <='z')
+....................          *p -= 'a' - 'A';
+....................    return(s);
+.................... }
+.................... 
+.................... 
+.................... /************************************************************/
+.................... 
+.................... 
+.................... #endif
+.................... 
+.................... #ifndef getc
+.................... #define getc getch
+.................... #define getchar getch
+.................... #define puts(s) {printf(s); putchar(13); putchar(10);}
+.................... #define putc putchar
+.................... #endif
+.................... /* maps error number to an error message. Writes a sequence of characters to
+.................... stderr stream thus: if s is not null then string pointed to by s follwed by
+.................... a colon (:) and a space and the appropriate error message returned by strerror
+.................... function with argument errno
+.................... 
+.................... Returns: no value
+.................... */
+.................... 
+.................... #ifdef _ERRNO
+.................... void perror(char *s)
+.................... {
+....................   if(s)
+....................   fprintf(STDERR,"%s: ",s);
+....................   fprintf(STDERR,"%s\r\n",strerror(errno));
+.................... }
+.................... #endif
+.................... #endif
+.................... 
+.................... 
+.................... #include "include/utils/circbuf.h"
+.................... /*
+....................  * Copyright (c) 2020-2021 Siddharth Chandrasekaran <sidcha.dev@gmail.com>
+....................  *
+....................  * SPDX-License-Identifier: Apache-2.0
+....................  */
+.................... 
+.................... #ifndef _UTIL_CIRCBUF_H_
+.................... #define _UTIL_CIRCBUF_H_
+.................... 
+.................... #include <stdint.h>
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////                                                                   ////
+.................... ////                           stdint.h                                ////
+.................... ////                                                                   ////
+.................... //// Standard integer definitions.                                     ////
+.................... ////                                                                   ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996,2008 Custom Computer Services           ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... 
+.................... #ifndef _STDINT
+.................... 
+.................... #define _STDINT
+.................... 
+.................... //////////// exact width
+.................... 
+.................... typedef signed int8 int8_t;
+.................... typedef unsigned int8 uint8_t;
+.................... typedef signed int16 int16_t;
+.................... typedef unsigned int16 uint16_t;
+.................... typedef signed int32 int32_t;
+.................... typedef unsigned int32 uint32_t;
+.................... 
+.................... #if defined(__PCD__)
+.................... //typedef signed int24 int24_t;
+.................... //typedef unsigned int24 uint24_t;
+.................... typedef signed int64 int64_t;
+.................... typedef unsigned int64 uint64_t;
+.................... #endif
+.................... 
+.................... #define INT8_MAX  (127)
+.................... #define INT8_MIN  (-128)
+.................... #define UINT8_MAX (255)
+.................... 
+.................... #define INT16_MAX  (32767)
+.................... #define INT16_MIN  (-32768)
+.................... #define UINT16_MAX (65535)
+.................... 
+.................... #define INT32_MAX  (2147483647)
+.................... #define INT32_MIN  (-2147483648)
+.................... #define UINT32_MAX (4294967295)
+.................... 
+.................... #if defined(__PCD__)
+.................... //#define INT24_MAX  (8388607)
+.................... //#define INT24_MIN  (-8388608)
+.................... //#define UINT24_MAX (16777215)
+.................... 
+.................... #define INT64_MAX  (9223372036854775807)
+.................... #define INT64_MIN  (-9223372036854775808)
+.................... #define UINT64_MAX (18446744073709551615)
+.................... #endif
+.................... 
+.................... ///////// minimum width
+.................... 
+.................... typedef signed int8 int_least8_t;
+.................... typedef unsigned int8 uint_least8_t;
+.................... typedef signed int16 int_least16_t;
+.................... typedef unsigned int16 uint_least16_t;
+.................... typedef signed int32 int_least32_t;
+.................... typedef unsigned int32 uint_least32_t;
+.................... 
+.................... #if defined(__PCD__)
+.................... //typedef signed int24 int_least24_t;
+.................... //typedef unsigned int24 uint_least24_t;
+.................... typedef signed int64 int_least64_t;
+.................... typedef unsigned int64 uint_least64_t;
+.................... #endif
+.................... 
+.................... #define INT_LEAST8_MAX  (127)
+.................... #define INT_LEAST8_MIN  (-128)
+.................... #define UINT_LEAST8_MAX (255)
+.................... 
+.................... #define INT_LEAST16_MAX  (32767)
+.................... #define INT_LEAST16_MIN  (-32768)
+.................... #define UINT_LEAST16_MAX (65535)
+.................... 
+.................... #define INT_LEAST32_MAX  (2147483647)
+.................... #define INT_LEAST32_MIN  (-2147483648)
+.................... #define UINT_LEAST32_MAX (4294967295)
+.................... 
+.................... #if defined(__PCD__)
+.................... //#define INT_LEAST24_MAX  (8388607)
+.................... //#define INT_LEAST24_MIN  (-8388608)
+.................... //#define UINT_LEAST24_MAX (16777215)
+.................... 
+.................... #define INT_LEAST64_MAX  (9223372036854775807)
+.................... #define INT_LEAST64_MIN  (-9223372036854775808)
+.................... #define UINT_LEAST64_MAX (18446744073709551615)
+.................... #endif
+.................... 
+.................... ///////// fastest width
+.................... 
+.................... #if defined(__PCD__)
+.................... typedef signed int16 int_fast8_t;
+.................... typedef unsigned int16 uint_fast8_t;
+.................... #define INT_FAST8_MAX  (32767)
+.................... #define INT_FAST8_MIN  (-32768)
+.................... #define UINT_FAST8_MAX (65535)
+.................... typedef signed int16 int_fast16_t;
+.................... typedef unsigned int16 uint_fast16_t;
+.................... //typedef signed int24 int_fast24_t;
+.................... //typedef unsigned int24 uint_fast24_t;
+.................... typedef signed int64 int_fast64_t;
+.................... typedef unsigned int64 uint_fast64_t;
+.................... #else
+.................... typedef signed int8 int_fast8_t;
+.................... typedef unsigned int8 uint_fast8_t;
+.................... #define INT_FAST8_MAX  (127)
+.................... #define INT_FAST8_MIN  (-128)
+.................... #define UINT_FAST8_MAX (255)
+.................... typedef signed int16 int_fast16_t;
+.................... typedef unsigned int16 uint_fast16_t;
+.................... #endif
+.................... 
+.................... typedef signed int32 int_fast32_t;
+.................... typedef unsigned int32 uint_fast32_t;
+.................... 
+.................... #define INT_FAST16_MAX  (32767)
+.................... #define INT_FAST16_MIN  (-32768)
+.................... #define UINT_FAST16_MAX (65535)
+.................... 
+.................... #define INT_FAST32_MAX  (2147483647)
+.................... #define INT_FAST32_MIN  (-2147483648)
+.................... #define UINT_FAST32_MAX (4294967295)
+.................... 
+.................... #if defined(__PCD__)
+.................... //#define INT_FAST24_MAX  (8388607)
+.................... //#define INT_FAST24_MIN  (-8388608)
+.................... //#define UINT_FAST24_MAX (16777215)
+.................... 
+.................... #define INT_FAST64_MAX  (9223372036854775807)
+.................... #define INT_FAST64_MIN  (-9223372036854775808)
+.................... #define UINT_FAST64_MAX (18446744073709551615)
+.................... #endif
+.................... 
+.................... //////////// big enough to hold pointers (OPTIONAL)
+.................... 
+.................... #if defined(__PCD__)
+....................    typedef unsigned int32 uintptr_t;
+....................    typedef signed int32 intptr_t;
+.................... #else
+....................    typedef unsigned int16 uintptr_t;
+....................    typedef signed int16 intptr_t;
+.................... #endif
+.................... 
+.................... #define INT8_C(val) ((int8_t)val)
+.................... #define UINT8_C(val) ((uint8_t)val)
+.................... #define INT16_C(val) ((int16_t)val)
+.................... #define UINT16_C(val) ((uint16_t)val)
+.................... #define INT32_C(val) ((int32_t)val)
+.................... #define UINT32_C(val) ((uint32_t)val)
+.................... 
+.................... #if defined(__PCD__)
+.................... #define INT64_C(val) ((int64_t)val)
+.................... #define UINT64_C(val) ((uint64_t)val)
+.................... #endif
+.................... 
+.................... /// TODO:
+.................... /// INTPTRN_MIN INTPTRN_MAX UINTPTRN_MAX
+.................... 
+.................... 
+.................... /////////// greatest width (OPTIONAL)
+.................... 
+.................... #ifdef __PCD__
+....................    typedef signed int64 intmax_t;
+....................    typedef unsigned int64 uintmax_t;
+....................    
+....................    #define INTMAXN_MAX  (9223372036854775807)
+....................    #define INTMAXN_MIN  (-9223372036854775808)
+....................    #define UINTMAXN_MAX (18446744073709551615)
+....................    
+....................    #define INTMAX_C(value) ((signed int64)val)
+....................    #define UINTMAX_C(value) ((unsigned int64)val)
+.................... #else
+....................    typedef signed int32 intmax_t;
+....................    typedef unsigned int32 uintmax_t;
+....................    
+....................    #define INTMAXN_MAX  (2147483647)
+....................    #define INTMAXN_MIN  (-2147483648)
+....................    #define UINTMAXN_MAX (4294967295)
+....................    
+....................    #define INTMAX_C(value) ((signed int32)val)
+....................    #define UINTMAX_C(value) ((unsigned int32)val)
+.................... #endif
+.................... 
+.................... 
+.................... #endif
+.................... 
+.................... 
+.................... 
+.................... /** --- Internal methods and structures. DON'T USE --------------------------- */
+.................... typedef struct {
+....................    void * buffer;
+....................    int push_count;
+....................    int pop_count;
+....................    int size;
+....................    int element_size;
+.................... } circbuf_t;
+.................... 
+.................... #define __CIRCBUF_VAR_DEF(type, buf, sz)      \
+....................    type buf ## _circbuf_data[sz];         \
+....................    circbuf_t buf = {            \
+....................       .buffer = buf ## _circbuf_data,      \
+....................       .push_count = 0,         \
+....................       .pop_count = 0,            \
+....................       .size = sz,            \
+....................       .element_size = sizeof(type)      \
+....................    };
+.................... 
+.................... int __circbuf_push(circbuf_t *circbuf, void *elem);
+.................... int __circbuf_pop (circbuf_t *circbuf, void *elem, int read_only);
+.................... int __circbuf_free_space(circbuf_t *circbuf);
+.................... /* -------------------------------------------------------------------------- */
+.................... 
+.................... /**
+....................  * Description:
+....................  *   Zero slots in circular buffer after a pop.
+....................  */
+.................... // #define CRICBUF_CLEAN_ON_POP
+.................... 
+.................... /**
+....................  * Description:
+....................  *   Defines a global circular buffer `buf` of a given type and size. The type
+....................  *   can be native data types or user-defined data types.
+....................  *
+....................  * Usage:
+....................  *   CIRCBUF_DEF(uint8_t, byte_buf, 13);
+....................  *   CIRCBUF_DEF(struct foo, foo_buf, 10);
+....................  */
+.................... #define CIRCBUF_DEF(type, buf, size)         \
+....................    __CIRCBUF_VAR_DEF(type, buf, size)      \
+....................    int buf ## _push_refd(type *pt)         \
+....................    {                  \
+....................       return __circbuf_push(&buf, pt);   \
+....................    }                  \
+....................    int buf ## _pop_refd(type *pt)         \
+....................    {                  \
+....................       return __circbuf_pop(&buf, pt, 0);   \
+....................    }                  \
+....................    int buf ## _peek_refd(type *pt)         \
+....................    {                  \
+....................       return __circbuf_pop(&buf, pt, 1);   \
+....................    }
+.................... 
+.................... /**
+....................  * Description:
+....................  *   Resets the circular buffer offsets to zero. Does not clean the newly freed
+....................  *   slots.
+....................  */
+.................... #define CIRCBUF_FLUSH(buf)            \
+....................    do {                  \
+....................       buf.push_count = 0;         \
+....................       buf.pop_count = 0;         \
+....................    } while(0)
+.................... 
+.................... /**
+....................  * Description:
+....................  *   Pushes element pointed to by `elem` at the head of circular buffer `buf`.
+....................  *   This is read-write method, occupancy count increases by one.
+....................  *
+....................  * Returns (int):
+....................  *   0 - Success
+....................  *  -1 - Out of space
+....................  */
+.................... #define CIRCBUF_PUSH(buf, elem)             buf ## _push_refd(elem)
+.................... 
+.................... /**
+....................  * Description:
+....................  *   Copies the element at tail of circular buffer `buf` into location pointed
+....................  *   by `elem`. This method is read-only, does not alter occupancy status.
+....................  *
+....................  * Returns (int):
+....................  *   0 - Success
+....................  *  -1 - Empty
+....................  */
+.................... #define CIRCBUF_PEEK(buf, elem)             buf ## _peek_refd(elem)
+.................... 
+.................... /**
+....................  * Description:
+....................  *   Removes the element at tail from circular buffer `buf` and makes it
+....................  *   available at `elem`. This is read-write method, occupancy count reduces
+....................  *   by one.
+....................  *
+....................  * Returns (int):
+....................  *   0 - Success
+....................  *  -1 - Empty
+....................  */
+.................... #define CIRCBUF_POP(buf, elem)              buf ## _pop_refd(elem)
+.................... 
+.................... /**
+....................  * Description:
+....................  *   Returns the number of free slots in the circular buffer `buf`.
+....................  *
+....................  * Returns (int):
+....................  *   0..N - number of slots available.
+....................  */
+.................... #define CIRCBUF_FS(buf)                     __circbuf_free_space(&buf)
+.................... 
+.................... #endif /* _UTIL_CIRCBUF_H_ */
+.................... 
+.................... #include "src/circbuf.c"
+.................... /*
+....................  * Copyright (c) 2020-2021 Siddharth Chandrasekaran <sidcha.dev@gmail.com>
+....................  *
+....................  * SPDX-License-Identifier: Apache-2.0
+....................  */
+.................... 
+.................... #include <string.h>
+.................... ////////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996,2008 Custom Computer Services            ////
+.................... //// This source code may only be used by licensed users of the CCS C   ////
+.................... //// compiler.  This source code may only be distributed to other       ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction  ////
+.................... //// or distribution is permitted without written permission.           ////
+.................... //// Derivative programs created using this software in object code     ////
+.................... //// form are not restricted in any way.                                ////
+.................... ////////////////////////////////////////////////////////////////////////////
+.................... 
+.................... #ifndef _STRING
+.................... #define _STRING
+.................... #include <stddef.h>
+.................... #include <ctype.h>
+.................... 
+.................... 
+.................... 
+.................... //////////////////////////////////////////////
+.................... //// Uncomment the following define to    ////
+.................... //// allow some functions to use a        ////
+.................... //// quicker algorithm, but use more ROM  ////
+.................... ////                                      ////
+.................... //// #define FASTER_BUT_MORE_ROM          ////
+.................... //////////////////////////////////////////////
+.................... 
+.................... 
+.................... 
+.................... /*Copying functions*/
+.................... /* standard template:
+....................    void *memmove(void *s1, void *s2, size_t n).
+....................    Copies max of n characters safely (not following ending '\0')
+....................    from s2 in s1; if s2 has less than n characters, appends 0 */
+.................... 
+.................... unsigned char *memmove(void *s1,void *s2,size_t n)
+.................... {
+....................    unsigned char *sc1;
+....................    unsigned char *sc2;
+....................    sc1=s1;
+....................    sc2=s2;
+....................    if(sc2<sc1 && sc1 <sc2 +n)
+....................       for(sc1+=n,sc2+=n;0<n;--n)
+....................          *--sc1=*--sc2;
+....................    else
+....................       for(;0<n;--n)
+....................          *sc1++=*sc2++;
+....................   return s1;
+....................   }
+.................... 
+.................... /* Standard template: char *strcpy(char *s1, const char *s2)
+....................    copies the string s2 including the null character to s1.
+....................    This is a compiler built in to handle the different address
+....................    spaces */
+.................... 
+.................... #define strcopy strcpy
+.................... 
+.................... /* standard template:
+....................    char *strncpy(char *s1, const char *s2, size_t n).
+....................    Copies max of n characters (not following ending '\0')
+....................    from s2 in s1; if s2 has less than n characters, appends 0 */
+.................... 
+.................... char *strncpy(char *s1, char *s2, size_t n)
+.................... {
+....................   char *s;
+.................... 
+....................   for (s = s1; n > 0 && *s2 != '\0'; n--)
+....................      *s++ = *s2++;
+....................   for (; n > 0; n--)
+....................      *s++ = '\0';
+.................... 
+....................   return(s1);
+.................... }
+.................... /***********************************************************/
+.................... 
+.................... /*concatenation functions*/
+.................... /* standard template: char *strcat(char *s1, const char *s2)
+.................... appends s2 to s1*/
+.................... 
+.................... char *strcat(char *s1, char *s2)
+.................... {
+....................    unsigned char *s;
+.................... 
+....................    for (s = s1; *s != '\0'; ++s);
+....................    while(*s2 != '\0')
+....................    {
+....................       *s = *s2;
+....................       ++s;
+....................       ++s2;
+....................    }
+.................... 
+....................    *s = '\0';
+....................    return(s1);
+.................... }
+.................... /* standard template: char *strncat(char *s1, char *s2,size_t n)
+.................... appends not more than n characters from s2 to s1*/
+.................... 
+.................... char *strncat(char *s1, char *s2, size_t n)
+.................... {
+....................    char *s;
+.................... 
+....................    for (s = s1; *s != '\0'; ++s);
+....................    while(*s2 != '\0' && 0<n)
+....................    {
+....................       *s = *s2;
+....................       ++s;
+....................       ++s2;
+....................       --n;
+....................    }
+.................... 
+....................    *s = '\0';
+....................    return(s1);
+.................... }
+.................... 
+.................... /***********************************************************/
+.................... 
+.................... 
+.................... /*comparison functions*/
+.................... /* standard template: signed int memcmp(void *s1, void *s2).
+....................    Compares s1 & s2; returns -1 if s1<s2, 0 if s1=s2, 1 if s1>s2 */
+.................... 
+.................... signed int memcmp(void * s1,void *s2,size_t n)
+.................... {
+.................... unsigned char *su1, *su2;
+.................... for(su1=s1, su2=s2; 0<n; ++su1, ++su2, --n)
+.................... {
+....................    if(*su1!=*su2)
+....................       return ((*su1<*su2)?-1:1);
+.................... }
+.................... return 0;
+.................... }
+.................... 
+.................... /* standard template: int strcmp(const char *s1, const char *s2).
+....................    Compares s1 & s2; returns -1 if s1<s2, 0 if s1=s2, 1 if s1>s2 */
+.................... 
+.................... signed int strcmp(char *s1, char *s2)
+.................... {
+....................    for (; *s1 == *s2; s1++, s2++)
+....................       if (*s1 == '\0')
+....................          return(0);
+....................    return((*s1 < *s2) ? -1: 1);
+.................... }
+.................... /* standard template: int strcoll(const char *s1, const char *s2).
+....................    Compares s1 & s2; returns -1 if s1<s2, 0 if s1=s2, 1 if s1>s2 */
+.................... 
+.................... signed int strcoll(char *s1, char *s2)
+.................... {
+....................    for (; *s1 == *s2; s1++, s2++)
+....................       if (*s1 == '\0')
+....................          return(0);
+....................    return((*s1 < *s2) ? -1: 1);
+.................... }
+.................... 
+.................... /* standard template:
+....................    int strncmp(const char *s1, const char *s2, size_t n).
+....................    Compares max of n characters (not following 0) from s1 to s2;
+....................    returns same as strcmp */
+.................... 
+.................... signed int strncmp(char *s1, char *s2, size_t n)
+.................... {
+....................    for (; n > 0; s1++, s2++, n--)
+....................       if (*s1 != *s2)
+....................          return((*s1 <*s2) ? -1: 1);
+....................       else if (*s1 == '\0')
+....................          return(0);
+....................    return(0);
+.................... }
+.................... /* standard template:
+....................    int strxfrm(const char *s1, const char *s2, size_t n).
+....................    transforms maximum of n characters from s2 and places them into s1, returns number of chars written ot s1.
+....................    if s1 is NULL and n is 0, then it returns the length of s2.*/
+.................... size_t strxfrm(char *s1, char *s2, size_t n)
+.................... {
+....................    char c;
+....................    size_t n1;
+....................    
+....................    if (!s1 && !n)
+....................       n = -1; //find length
+.................... 
+....................    n1 = 0;
+....................    
+....................    for (; n1 < n; n1++)
+....................    {
+....................       c = *s2++;
+....................       if (!c)
+....................          break;
+....................       if (s1)
+....................          *s1++ = c;
+....................    }
+.................... 
+....................   return(n1);
+.................... }
+.................... 
+.................... 
+.................... 
+.................... 
+.................... 
+.................... /***********************************************************/
+.................... /*Search functions*/
+.................... /* standard template: void *memchr(const char *s, int c).
+....................    Finds first occurrence of c in n characters of s */
+.................... 
+.................... char *memchr(void *s,unsigned int8 c,size_t n)
+.................... {
+....................    char uc;
+....................    char *su;
+....................    uc=c;
+....................    for(su=s;0<n;++su,--n)
+....................       if(*su==uc)
+....................       return su;
+....................    return NULL;
+.................... }
+.................... 
+.................... /* standard template: char *strchr(const char *s, int c).
+....................    Finds first occurrence of c in s */
+.................... 
+.................... char *strchr(char *s, char c)
+.................... {
+....................    for (; *s != c; s++)
+....................       if (*s == '\0')
+....................          return(0);
+....................    return(s);
+.................... }
+.................... /* standard template:
+....................    size_t strcspn(const char *s1, const char *s2).
+....................    Computes length of max initial segment of s1 that
+....................    consists entirely of characters NOT from s2*/
+.................... 
+.................... size_t strcspn(char *s1, char *s2)
+.................... {
+....................    char *sc1, *sc2;
+.................... 
+....................    for (sc1 = s1; *sc1 != 0; sc1++)
+....................       for (sc2 = s2; *sc2 != 0; sc2++)
+....................          if (*sc1 == *sc2)
+....................             return(sc1 - s1);
+....................    return(sc1 - s1);
+.................... }
+.................... /* standard template:
+....................    char *strpbrk(const char *s1, const char *s2).
+....................    Locates first occurence of any character from s2 in s1;
+....................    returns s1 if s2 is empty string */
+.................... 
+.................... char *strpbrk(char *s1, char *s2)
+.................... {
+....................    char *sc1, *sc2;
+.................... 
+....................    for (sc1 = s1; *sc1 != 0; sc1++)
+....................       for (sc2 = s2; *sc2 != 0; sc2++)
+....................          if (*sc1 == *sc2)
+....................             return(sc1);
+....................    return(0);
+.................... }
+.................... 
+.................... 
+.................... /* standard template: char *strrchr(const char *s, int c).
+....................    Finds last occurrence of c in s */
+.................... 
+.................... char *strrchr(char *s, char c)
+.................... {
+....................    char *p;
+.................... 
+....................    for (p = 0; ; s++)
+....................    {
+....................       if (*s == c)
+....................          p = s;
+....................       if (*s == '\0')
+....................          return(p);
+....................    }
+.................... }
+.................... /* computes length of max initial segment of s1 consisting
+....................    entirely of characters from s2 */
+.................... 
+.................... size_t strspn(char *s1, char *s2)
+.................... {
+....................    char *sc1, *sc2;
+.................... 
+....................    for (sc1 = s1; *sc1 != 0; sc1++)
+....................       for (sc2 = s2; ; sc2++)
+....................     if (*sc2 == '\0')
+....................        return(sc1 - s1);
+....................          else if (*sc1 == *sc2)
+....................             break;
+....................    return(sc1 - s1);
+.................... }
+.................... /* standard template:
+....................    char *strstr(const char *s1, const char *s2);
+....................    Locates first occurence of character sequence s2 in s1;
+....................    returns 0 if s2 is empty string
+.................... 
+....................    Uncomment #define FASTER_BUT_MORE_ROM at the top of the
+....................    file to use the faster algorithm */
+.................... char *strstr(char *s1, char *s2)
+.................... {
+....................    char *s, *t;
+.................... 
+....................    #ifdef FASTER_BUT_MORE_ROM
+....................    if (*s2 == '\0')
+....................          return(s1);
+....................    #endif
+.................... 
+....................    while (*s1)
+....................    {
+....................       for(s = s1, t = s2; *t && (*s == *t); ++s, ++t);
+.................... 
+....................       if (*t == '\0')
+....................          return s1;
+....................       ++s1;
+....................       #ifdef FASTER_BUT_MORE_ROM
+....................          while(*s1 != '\0' && *s1 != *s2)
+....................             ++s1;
+....................       #endif
+....................    }
+....................    return 0;
+.................... }
+.................... 
+.................... /* standard template: size_t strlen(const char *s).
+....................    Computes length of s1 (preceding terminating 0) */
+.................... 
+.................... size_t strlen(char *s)
+.................... {
+....................    char *sc;
+.................... 
+....................    for (sc = s; *sc != 0; sc++);
+....................    return(sc - s);
+.................... }
+.................... 
+.................... /* standard template: char *strtok(char *s1, const char *s2).
+.................... 
+....................    Finds next token in s1 delimited by a character from separator
+....................    string s2 (which can be different from call to call).  First call
+....................    starts at beginning of s1 searching for first character NOT
+....................    contained in s2; returns 0 if none is found.
+....................    If one is found, it is the start of first token (return value).
+....................    Function then searches from there for a character contained in s2.
+....................    If none is found, current token extends to end of s1, and subsequent
+....................    searches for a token will return 0.  If one is found, it is
+....................    overwritten by '\0', which terminates current token.  Function saves
+....................    pointer to following character from which next search will start.
+....................    Each subsequent call, with 0 as first argument, starts searching
+....................    from saved pointer */
+.................... 
+.................... char *strtok(char *s1, char *s2)
+.................... {
+....................    char *beg, *end;
+....................    static char *save;
+.................... 
+....................    beg = (s1)? s1: save;
+....................    beg += strspn(beg, s2);
+....................    if (*beg == '\0')
+....................       return(0);
+....................       
+....................    end = strpbrk(beg, s2);
+....................    if (end != '\0')
+....................    {
+....................       *end = '\0';
+....................       end++;
+....................       save = end;
+....................    }
+....................    else
+....................       save = beg + strlen(beg);
+....................    
+....................    return(beg);
+.................... }
+.................... 
+.................... /*****************************************************************/
+.................... /*Miscellaneous functions*/
+.................... /* standard template
+.................... maps error number in errnum to an error message string
+.................... Returns: Pointer to string
+.................... */
+.................... #ifdef _ERRNO
+.................... char * strerror(unsigned int8 errnum)
+.................... {
+.................... static unsigned char s[13];
+.................... switch( errnum)
+.................... {
+.................... case 0:
+....................    strcpy(s,"no errors");
+....................    return s;
+.................... case EDOM :
+....................    strcpy(s,"domain error");
+....................    return s;
+.................... case ERANGE:
+....................    strcpy(s,"range error");
+....................    return s;
+.................... }
+.................... }
+.................... #ENDIF
+.................... 
+.................... /* standard template: size_t stricmp(const char *s1, const char *s2).
+....................    Compares s1 to s2 ignoring case (upper vs. lower) */
+.................... 
+.................... signed int stricmp(char *s1, char *s2)
+.................... {
+....................  for(; *s1==*s2||(isalpha(*s1)&&isalpha(*s2)&&((char)*s1==(char)*s2+(char)32||(char)*s2==(char)*s1+(char)32));
+....................     s1++, s2++)
+....................     if (*s1 == '\0')
+....................        return(0);
+....................  return((*s1 < *s2) ? -1: 1);
+.................... }
+.................... 
+.................... 
+.................... /* standard template: char *strlwr(char *s).
+....................    Replaces uppercase letters by lowercase;
+....................    returns pointer to new string s */
+.................... 
+.................... char *strlwr(char *s)
+.................... {
+....................    char *p;
+.................... 
+....................    for (p = s; *p != '\0'; p++)
+....................       if (*p >= 'A' && *p <='Z')
+....................          *p += 'a' - 'A';
+....................    return(s);
+.................... }
+.................... 
+.................... /* standard template: char *strupr(char *s).
+....................    Replaces lowercase letters by upercase;
+....................    returns pointer to new string s */
+.................... 
+.................... char *strupr(char *s)
+.................... {
+....................    char *p;
+.................... 
+....................    for (p = s; *p != '\0'; p++)
+....................       if (*p >= 'a' && *p <='z')
+....................          *p -= 'a' - 'A';
+....................    return(s);
+.................... }
+.................... 
+.................... 
+.................... /************************************************************/
+.................... 
+.................... 
+.................... #endif
+.................... 
+.................... #include <stdint.h>
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////                                                                   ////
+.................... ////                           stdint.h                                ////
+.................... ////                                                                   ////
+.................... //// Standard integer definitions.                                     ////
+.................... ////                                                                   ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996,2008 Custom Computer Services           ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... 
+.................... #ifndef _STDINT
+.................... 
+.................... #define _STDINT
+.................... 
+.................... //////////// exact width
+.................... 
+.................... typedef signed int8 int8_t;
+.................... typedef unsigned int8 uint8_t;
+.................... typedef signed int16 int16_t;
+.................... typedef unsigned int16 uint16_t;
+.................... typedef signed int32 int32_t;
+.................... typedef unsigned int32 uint32_t;
+.................... 
+.................... #if defined(__PCD__)
+.................... //typedef signed int24 int24_t;
+.................... //typedef unsigned int24 uint24_t;
+.................... typedef signed int64 int64_t;
+.................... typedef unsigned int64 uint64_t;
+.................... #endif
+.................... 
+.................... #define INT8_MAX  (127)
+.................... #define INT8_MIN  (-128)
+.................... #define UINT8_MAX (255)
+.................... 
+.................... #define INT16_MAX  (32767)
+.................... #define INT16_MIN  (-32768)
+.................... #define UINT16_MAX (65535)
+.................... 
+.................... #define INT32_MAX  (2147483647)
+.................... #define INT32_MIN  (-2147483648)
+.................... #define UINT32_MAX (4294967295)
+.................... 
+.................... #if defined(__PCD__)
+.................... //#define INT24_MAX  (8388607)
+.................... //#define INT24_MIN  (-8388608)
+.................... //#define UINT24_MAX (16777215)
+.................... 
+.................... #define INT64_MAX  (9223372036854775807)
+.................... #define INT64_MIN  (-9223372036854775808)
+.................... #define UINT64_MAX (18446744073709551615)
+.................... #endif
+.................... 
+.................... ///////// minimum width
+.................... 
+.................... typedef signed int8 int_least8_t;
+.................... typedef unsigned int8 uint_least8_t;
+.................... typedef signed int16 int_least16_t;
+.................... typedef unsigned int16 uint_least16_t;
+.................... typedef signed int32 int_least32_t;
+.................... typedef unsigned int32 uint_least32_t;
+.................... 
+.................... #if defined(__PCD__)
+.................... //typedef signed int24 int_least24_t;
+.................... //typedef unsigned int24 uint_least24_t;
+.................... typedef signed int64 int_least64_t;
+.................... typedef unsigned int64 uint_least64_t;
+.................... #endif
+.................... 
+.................... #define INT_LEAST8_MAX  (127)
+.................... #define INT_LEAST8_MIN  (-128)
+.................... #define UINT_LEAST8_MAX (255)
+.................... 
+.................... #define INT_LEAST16_MAX  (32767)
+.................... #define INT_LEAST16_MIN  (-32768)
+.................... #define UINT_LEAST16_MAX (65535)
+.................... 
+.................... #define INT_LEAST32_MAX  (2147483647)
+.................... #define INT_LEAST32_MIN  (-2147483648)
+.................... #define UINT_LEAST32_MAX (4294967295)
+.................... 
+.................... #if defined(__PCD__)
+.................... //#define INT_LEAST24_MAX  (8388607)
+.................... //#define INT_LEAST24_MIN  (-8388608)
+.................... //#define UINT_LEAST24_MAX (16777215)
+.................... 
+.................... #define INT_LEAST64_MAX  (9223372036854775807)
+.................... #define INT_LEAST64_MIN  (-9223372036854775808)
+.................... #define UINT_LEAST64_MAX (18446744073709551615)
+.................... #endif
+.................... 
+.................... ///////// fastest width
+.................... 
+.................... #if defined(__PCD__)
+.................... typedef signed int16 int_fast8_t;
+.................... typedef unsigned int16 uint_fast8_t;
+.................... #define INT_FAST8_MAX  (32767)
+.................... #define INT_FAST8_MIN  (-32768)
+.................... #define UINT_FAST8_MAX (65535)
+.................... typedef signed int16 int_fast16_t;
+.................... typedef unsigned int16 uint_fast16_t;
+.................... //typedef signed int24 int_fast24_t;
+.................... //typedef unsigned int24 uint_fast24_t;
+.................... typedef signed int64 int_fast64_t;
+.................... typedef unsigned int64 uint_fast64_t;
+.................... #else
+.................... typedef signed int8 int_fast8_t;
+.................... typedef unsigned int8 uint_fast8_t;
+.................... #define INT_FAST8_MAX  (127)
+.................... #define INT_FAST8_MIN  (-128)
+.................... #define UINT_FAST8_MAX (255)
+.................... typedef signed int16 int_fast16_t;
+.................... typedef unsigned int16 uint_fast16_t;
+.................... #endif
+.................... 
+.................... typedef signed int32 int_fast32_t;
+.................... typedef unsigned int32 uint_fast32_t;
+.................... 
+.................... #define INT_FAST16_MAX  (32767)
+.................... #define INT_FAST16_MIN  (-32768)
+.................... #define UINT_FAST16_MAX (65535)
+.................... 
+.................... #define INT_FAST32_MAX  (2147483647)
+.................... #define INT_FAST32_MIN  (-2147483648)
+.................... #define UINT_FAST32_MAX (4294967295)
+.................... 
+.................... #if defined(__PCD__)
+.................... //#define INT_FAST24_MAX  (8388607)
+.................... //#define INT_FAST24_MIN  (-8388608)
+.................... //#define UINT_FAST24_MAX (16777215)
+.................... 
+.................... #define INT_FAST64_MAX  (9223372036854775807)
+.................... #define INT_FAST64_MIN  (-9223372036854775808)
+.................... #define UINT_FAST64_MAX (18446744073709551615)
+.................... #endif
+.................... 
+.................... //////////// big enough to hold pointers (OPTIONAL)
+.................... 
+.................... #if defined(__PCD__)
+....................    typedef unsigned int32 uintptr_t;
+....................    typedef signed int32 intptr_t;
+.................... #else
+....................    typedef unsigned int16 uintptr_t;
+....................    typedef signed int16 intptr_t;
+.................... #endif
+.................... 
+.................... #define INT8_C(val) ((int8_t)val)
+.................... #define UINT8_C(val) ((uint8_t)val)
+.................... #define INT16_C(val) ((int16_t)val)
+.................... #define UINT16_C(val) ((uint16_t)val)
+.................... #define INT32_C(val) ((int32_t)val)
+.................... #define UINT32_C(val) ((uint32_t)val)
+.................... 
+.................... #if defined(__PCD__)
+.................... #define INT64_C(val) ((int64_t)val)
+.................... #define UINT64_C(val) ((uint64_t)val)
+.................... #endif
+.................... 
+.................... /// TODO:
+.................... /// INTPTRN_MIN INTPTRN_MAX UINTPTRN_MAX
+.................... 
+.................... 
+.................... /////////// greatest width (OPTIONAL)
+.................... 
+.................... #ifdef __PCD__
+....................    typedef signed int64 intmax_t;
+....................    typedef unsigned int64 uintmax_t;
+....................    
+....................    #define INTMAXN_MAX  (9223372036854775807)
+....................    #define INTMAXN_MIN  (-9223372036854775808)
+....................    #define UINTMAXN_MAX (18446744073709551615)
+....................    
+....................    #define INTMAX_C(value) ((signed int64)val)
+....................    #define UINTMAX_C(value) ((unsigned int64)val)
+.................... #else
+....................    typedef signed int32 intmax_t;
+....................    typedef unsigned int32 uintmax_t;
+....................    
+....................    #define INTMAXN_MAX  (2147483647)
+....................    #define INTMAXN_MIN  (-2147483648)
+....................    #define UINTMAXN_MAX (4294967295)
+....................    
+....................    #define INTMAX_C(value) ((signed int32)val)
+....................    #define UINTMAX_C(value) ((unsigned int32)val)
+.................... #endif
+.................... 
+.................... 
+.................... #endif
+.................... 
+.................... 
+.................... 
+.................... #include "include/utils/circbuf.h"
+.................... /*
+....................  * Copyright (c) 2020-2021 Siddharth Chandrasekaran <sidcha.dev@gmail.com>
+....................  *
+....................  * SPDX-License-Identifier: Apache-2.0
+....................  */
+.................... 
+.................... #ifndef _UTIL_CIRCBUF_H_
+.................... #define _UTIL_CIRCBUF_H_
+.................... 
+.................... #include <stdint.h>
+.................... 
+.................... /** --- Internal methods and structures. DON'T USE --------------------------- */
+.................... typedef struct {
+....................    void * buffer;
+....................    int push_count;
+....................    int pop_count;
+....................    int size;
+....................    int element_size;
+.................... } circbuf_t;
+.................... 
+.................... #define __CIRCBUF_VAR_DEF(type, buf, sz)      \
+....................    type buf ## _circbuf_data[sz];         \
+....................    circbuf_t buf = {            \
+....................       .buffer = buf ## _circbuf_data,      \
+....................       .push_count = 0,         \
+....................       .pop_count = 0,            \
+....................       .size = sz,            \
+....................       .element_size = sizeof(type)      \
+....................    };
+.................... 
+.................... int __circbuf_push(circbuf_t *circbuf, void *elem);
+.................... int __circbuf_pop (circbuf_t *circbuf, void *elem, int read_only);
+.................... int __circbuf_free_space(circbuf_t *circbuf);
+.................... /* -------------------------------------------------------------------------- */
+.................... 
+.................... /**
+....................  * Description:
+....................  *   Zero slots in circular buffer after a pop.
+....................  */
+.................... // #define CRICBUF_CLEAN_ON_POP
+.................... 
+.................... /**
+....................  * Description:
+....................  *   Defines a global circular buffer `buf` of a given type and size. The type
+....................  *   can be native data types or user-defined data types.
+....................  *
+....................  * Usage:
+....................  *   CIRCBUF_DEF(uint8_t, byte_buf, 13);
+....................  *   CIRCBUF_DEF(struct foo, foo_buf, 10);
+....................  */
+.................... #define CIRCBUF_DEF(type, buf, size)         \
+....................    __CIRCBUF_VAR_DEF(type, buf, size)      \
+....................    int buf ## _push_refd(type *pt)         \
+....................    {                  \
+....................       return __circbuf_push(&buf, pt);   \
+....................    }                  \
+....................    int buf ## _pop_refd(type *pt)         \
+....................    {                  \
+....................       return __circbuf_pop(&buf, pt, 0);   \
+....................    }                  \
+....................    int buf ## _peek_refd(type *pt)         \
+....................    {                  \
+....................       return __circbuf_pop(&buf, pt, 1);   \
+....................    }
+.................... 
+.................... /**
+....................  * Description:
+....................  *   Resets the circular buffer offsets to zero. Does not clean the newly freed
+....................  *   slots.
+....................  */
+.................... #define CIRCBUF_FLUSH(buf)            \
+....................    do {                  \
+....................       buf.push_count = 0;         \
+....................       buf.pop_count = 0;         \
+....................    } while(0)
+.................... 
+.................... /**
+....................  * Description:
+....................  *   Pushes element pointed to by `elem` at the head of circular buffer `buf`.
+....................  *   This is read-write method, occupancy count increases by one.
+....................  *
+....................  * Returns (int):
+....................  *   0 - Success
+....................  *  -1 - Out of space
+....................  */
+.................... #define CIRCBUF_PUSH(buf, elem)             buf ## _push_refd(elem)
+.................... 
+.................... /**
+....................  * Description:
+....................  *   Copies the element at tail of circular buffer `buf` into location pointed
+....................  *   by `elem`. This method is read-only, does not alter occupancy status.
+....................  *
+....................  * Returns (int):
+....................  *   0 - Success
+....................  *  -1 - Empty
+....................  */
+.................... #define CIRCBUF_PEEK(buf, elem)             buf ## _peek_refd(elem)
+.................... 
+.................... /**
+....................  * Description:
+....................  *   Removes the element at tail from circular buffer `buf` and makes it
+....................  *   available at `elem`. This is read-write method, occupancy count reduces
+....................  *   by one.
+....................  *
+....................  * Returns (int):
+....................  *   0 - Success
+....................  *  -1 - Empty
+....................  */
+.................... #define CIRCBUF_POP(buf, elem)              buf ## _pop_refd(elem)
+.................... 
+.................... /**
+....................  * Description:
+....................  *   Returns the number of free slots in the circular buffer `buf`.
+....................  *
+....................  * Returns (int):
+....................  *   0..N - number of slots available.
+....................  */
+.................... #define CIRCBUF_FS(buf)                     __circbuf_free_space(&buf)
+.................... 
+.................... #endif /* _UTIL_CIRCBUF_H_ */
+.................... 
+.................... 
+.................... int __circbuf_pop(circbuf_t *circ_buf, void *elem, int read_only)
+.................... {
+....................    int16_t total;
+....................    char *tail;
+.................... 
+....................    total = circ_buf->push_count - circ_buf->pop_count;
+....................    if (total < 0)
+....................       total += (2 * circ_buf->size);
+.................... 
+....................    if (total == 0)
+....................       return -1; // Empty
+.................... 
+....................    tail = (char *)circ_buf->buffer + ((circ_buf->pop_count % circ_buf->size)
+....................          * circ_buf->element_size);
+.................... 
+....................    if (elem)
+....................       memcpy(elem, tail, circ_buf->element_size);
+.................... 
+....................    if (!read_only) {
+.................... #ifdef CRICBUF_CLEAN_ON_POP
+....................       memset(tail, 0, circ_buf->element_size);
+.................... #endif
+....................       circ_buf->pop_count++;
+....................       if (circ_buf->pop_count >= (2*circ_buf->size))
+....................          circ_buf->pop_count = 0;
+....................    }
+....................    return 0;
+.................... }
+.................... 
+.................... int __circbuf_push(circbuf_t *circ_buf, void *elem)
+.................... {
+....................    int16_t total;
+....................    char *head;
+.................... 
+....................    total = circ_buf->push_count - circ_buf->pop_count;
+....................    if (total < 0)
+....................       total += (2 * circ_buf->size);
+.................... 
+....................    if (total >=  circ_buf->size)
+....................       return -1; // Full
+.................... 
+....................    head = (char *)circ_buf->buffer + ( (circ_buf->push_count % circ_buf->size)
+....................          * circ_buf->element_size );
+....................    memcpy(head, elem, circ_buf->element_size);
+....................    circ_buf->push_count++;
+....................    if (circ_buf->push_count >= (2*circ_buf->size))
+....................       circ_buf->push_count = 0;
+....................    return 0;
+.................... }
+.................... 
+.................... int __circbuf_free_space(circbuf_t *circ_buf)
+.................... {
+....................    int16_t total;
+.................... 
+....................    total = circ_buf->push_count - circ_buf->pop_count;
+....................    if (total < 0)
+....................       total += (2 * circ_buf->size);
+.................... 
+....................    return circ_buf->size - total;
+.................... }
+.................... 
+.................... 
+.................... #use rs232(baud=115200,parity=N,xmit=PIN_C7,rcv=PIN_C6,bits=8,stream=RS232_U1,UART1,RECEIVE_BUFFER=2,errors)
+.................... 
+.................... #use rtos(timer=0,minor_cycle=1ms)
+.................... 
+.................... // each function that is to be an operating system task must have the #task
+.................... // preprocessor directive located above it.
+.................... // in this case, the task will run every second, its maximum time to run must
+.................... // be less than or equal to the minor cycle, and there is no need for a
+.................... // queue at this point, so no memory will be reserved.
+.................... //
+.................... // the function can be called anything that a standard function can be called
+.................... #task(rate=1000ms,max=1ms,queue=2)
+.................... void the_first_rtos_task ( );
+.................... 
+.................... #task(rate=500ms,max=1ms,queue=2)
+.................... void the_second_rtos_task ( );
+.................... 
+.................... void the_first_rtos_task ( )
+*
+000B6:  CLRF   53F
+.................... {
+....................    int count=0;
+....................    // rtos_yield allows the user to break out of a task at a given point
+....................    // and return to the same ponit when the task comes back into context
+....................    while(TRUE){
+....................       count++;
+000B8:  INCF   53F,F
+....................       rtos_msg_send(the_second_rtos_task,count);
+000BA:  MOVLW  3C
+000BC:  ADDWF  53A,W
+000BE:  MOVWF  4E9
+000C0:  MOVLW  05
+000C2:  MOVWF  4EA
+000C4:  BTFSC  4D8.0
+000C6:  INCF   4EA,F
+000C8:  INCF   53A,W
+000CA:  MOVWF  500
+000CC:  SUBLW  03
+000CE:  BNZ   00D2
+000D0:  CLRF   500
+000D2:  MOVF   53B,W
+000D4:  SUBWF  500,W
+000D6:  BNZ   00DC
+000D8:  MOVLW  00
+000DA:  BRA    00E6
+000DC:  MOVFF  500,53A
+000E0:  MOVFF  53F,4EF
+000E4:  MOVLW  01
+....................       rtos_yield ( );
+000E6:  MOVLW  F6
+000E8:  MOVWF  52A
+000EA:  MOVLW  00
+000EC:  MOVWF  52B
+000EE:  MOVLW  00
+000F0:  MOVWF  52C
+000F2:  GOTO   03F6
+000F6:  BRA    00B8
+....................    }
+000F8:  MOVLW  B6
+000FA:  MOVWF  52A
+000FC:  MOVLW  00
+000FE:  MOVWF  52B
+00100:  MOVLW  00
+00102:  MOVWF  52C
+00104:  GOTO   03F6
+.................... }
+.................... 
+.................... void the_second_rtos_task ( )
+.................... {
+....................    if(rtos_msg_poll( ))
+*
+00228:  MOVF   53B,W
+0022A:  SUBWF  53A,W
+0022C:  BNC   0234
+0022E:  MOVF   53B,W
+00230:  SUBWF  53A,W
+00232:  BRA    023C
+00234:  MOVLW  03
+00236:  BSF    4D8.0
+00238:  SUBFWB 53B,W
+0023A:  ADDWF  53A,W
+0023C:  XORLW  00
+0023E:  BZ    0296
+....................    {
+....................       printf("count is : %i\n\r",rtos_msg_read ( ));
+00240:  MOVF   53B,W
+00242:  SUBWF  53A,W
+00244:  BZ    0240
+00246:  MOVLW  3C
+00248:  ADDWF  53B,W
+0024A:  MOVWF  4E9
+0024C:  MOVLW  05
+0024E:  MOVWF  4EA
+00250:  BTFSC  4D8.0
+00252:  INCF   4EA,F
+00254:  MOVFF  4EF,501
+00258:  INCF   53B,F
+0025A:  MOVF   53B,W
+0025C:  SUBLW  03
+0025E:  BNZ   0262
+00260:  CLRF   53B
+00262:  MOVFF  501,540
+00266:  MOVLW  A6
+00268:  MOVWF  4F6
+0026A:  MOVLW  02
+0026C:  MOVWF  4F7
+0026E:  MOVLW  00
+00270:  MOVWF  4F8
+00272:  MOVLW  0B
+00274:  MOVWF  541
+00276:  BRA    0108
+00278:  MOVFF  540,541
+0027C:  MOVLW  18
+0027E:  MOVWF  542
+00280:  BRA    0164
+00282:  MOVLW  0A
+00284:  BTFSS  4B2.1
+00286:  BRA    0284
+00288:  MOVLB  2
+0028A:  MOVWF  xA3
+0028C:  MOVLW  0D
+0028E:  BTFSS  4B2.1
+00290:  BRA    028E
+00292:  MOVWF  xA3
+00294:  MOVLB  0
+....................    }
+00296:  MOVLW  28
+00298:  MOVWF  537
+0029A:  MOVLW  02
+0029C:  MOVWF  538
+0029E:  MOVLW  00
+002A0:  MOVWF  539
+002A2:  GOTO   03F6
+.................... }
+.................... 
+.................... 
+.................... void main()
+*
+002B6:  CLRF   4F8
+002B8:  BCF    4D6.5
+002BA:  BSF    507.7
+002BC:  MOVLB  E
+002BE:  MOVLW  55
+002C0:  MOVLB  2
+002C2:  MOVWF  x00
+002C4:  MOVLW  AA
+002C6:  MOVWF  x00
+002C8:  BCF    x00.0
+002CA:  MOVLW  16
+002CC:  MOVWF  x72
+002CE:  MOVLW  20
+002D0:  MOVWF  x18
+002D2:  MOVLW  55
+002D4:  MOVWF  x00
+002D6:  MOVLW  AA
+002D8:  MOVWF  x00
+002DA:  BSF    x00.0
+002DC:  MOVLB  0
+002DE:  CLRF   xB0
+002E0:  CLRF   xAF
+002E2:  CLRF   xB3
+002E4:  MOVLW  08
+002E6:  MOVWF  xB1
+002E8:  MOVLW  60
+002EA:  MOVWF  xAD
+002EC:  MOVLB  2
+002EE:  BCF    xAC.7
+002F0:  BCF    4C8.7
+002F2:  BSF    4C0.7
+002F4:  MOVLW  B0
+002F6:  MOVWF  xAB
+002F8:  CLRF   xAF
+002FA:  MOVLW  8A
+002FC:  MOVWF  xAE
+002FE:  CLRF   xAD
+00300:  BSF    xAC.7
+00302:  CLRF   51F
+00304:  CLRF   520
+00306:  CLRF   522
+00308:  CLRF   521
+0030A:  CLRF   523
+0030C:  CLRF   51F
+0030E:  CLRF   520
+00310:  BSF    4A2.0
+00312:  MOVLB  4
+00314:  CLRF   x00
+00316:  CLRF   x08
+00318:  CLRF   x10
+0031A:  CLRF   x18
+0031C:  CLRF   x20
+0031E:  CLRF   x28
+00320:  MOVLB  0
+00322:  CLRF   x71
+00324:  CLRF   x72
+00326:  CLRF   x73
+00328:  CLRF   x70
+0032A:  CLRF   x75
+0032C:  CLRF   x76
+0032E:  CLRF   x77
+00330:  CLRF   x74
+00332:  CLRF   51B
+00334:  CLRF   51C
+.................... {
+....................    setup_timer_0(RTCC_INTERNAL|RTCC_DIV_1|RTCC_8_BIT);      //16.0 us overflow
+00336:  MOVLW  80
+00338:  MOVLB  3
+0033A:  MOVWF  x1A
+0033C:  MOVLW  40
+0033E:  MOVWF  x1B
+....................    while(TRUE)
+....................    {
+....................       rtos_run ( );
+00340:  CLRF   525
+00342:  MOVLW  03
+00344:  MOVWF  527
+00346:  MOVLW  E8
+00348:  MOVWF  526
+0034A:  CLRF   529
+0034C:  MOVLW  01
+0034E:  MOVWF  528
+00350:  CLRF   52D
+00352:  CLRF   52E
+00354:  MOVLW  B6
+00356:  MOVWF  52A
+00358:  MOVLW  00
+0035A:  MOVWF  52B
+0035C:  MOVLW  00
+0035E:  MOVWF  52C
+00360:  CLRF   532
+00362:  MOVLW  01
+00364:  MOVWF  534
+00366:  MOVLW  F4
+00368:  MOVWF  533
+0036A:  CLRF   536
+0036C:  CLRF   535
+0036E:  CLRF   53A
+00370:  CLRF   53B
+00372:  MOVLW  28
+00374:  MOVWF  537
+00376:  MOVLW  02
+00378:  MOVWF  538
+0037A:  MOVLW  00
+0037C:  MOVWF  539
+0037E:  CLRF   524
+00380:  MOVLW  90
+00382:  MOVWF  x1A
+00384:  MOVLW  40
+00386:  MOVWF  x1B
+00388:  BTFSS  x1A.4
+0038A:  BRA    0390
+0038C:  MOVLW  C1
+0038E:  MOVWF  x19
+00390:  MOVLW  80
+00392:  MOVWF  x18
+00394:  BCF    4B1.7
+00396:  BCF    4D8.0
+00398:  RLCF   524,W
+0039A:  MOVWF  500
+0039C:  MOVLB  0
+0039E:  RCALL  005C
+003A0:  MOVWF  502
+003A2:  MOVLW  01
+003A4:  ADDWF  500,W
+003A6:  RCALL  005C
+003A8:  MOVWF  503
+003AA:  MOVFF  503,4EA
+003AE:  MOVFF  502,4E9
+003B2:  MOVFF  4EF,502
+003B6:  INCF   4E9,F
+003B8:  MOVFF  4EF,500
+003BC:  MOVFF  4EC,501
+003C0:  INCF   4EC,F
+003C2:  MOVFF  4EF,503
+003C6:  BNZ   03CC
+003C8:  INCF   4EC,F
+003CA:  MOVF   4ED,F
+003CC:  MOVF   4EC,W
+003CE:  SUBWF  501,W
+003D0:  BNZ   03F8
+003D2:  MOVF   500,W
+003D4:  SUBWF  503,W
+003D6:  BNZ   03F8
+003D8:  MOVF   4ED,F
+003DA:  CLRF   4EE
+003DC:  CLRF   4EF
+003DE:  BTFSC  502.7
+003E0:  BRA    03F8
+003E2:  MOVF   4EC,F
+003E4:  MOVFF  4EC,4FA
+003E8:  MOVFF  4EC,4FB
+003EC:  MOVF   4ED,F
+003EE:  MOVF   4ED,F
+003F0:  MOVFF  4EF,4E8
+003F4:  MOVWF  4F9
+003F6:  MOVLB  0
+003F8:  INCF   524,F
+003FA:  MOVLW  02
+003FC:  SUBWF  524,W
+003FE:  BTFSC  4D8.2
+00400:  BRA    0406
+00402:  MOVLB  3
+00404:  BRA    0396
+00406:  CLRF   524
+00408:  MOVLB  3
+0040A:  MOVF   x18,W
+0040C:  BTFSC  x1A.4
+0040E:  MOVFF  319,503
+00412:  BTFSS  x1A.4
+00414:  CLRF   503
+00416:  BTFSC  4B1.7
+00418:  BRA    0388
+0041A:  BRA    040A
+0041C:  SETF   524
+0041E:  BRA    0340
+....................    }
+.................... }
+00420:  SLEEP 
+
+Configuration Fuses:
+   Word  1: EF8C   NOEXTOSC RSTOSC_HFINTRC_64MHZ NOCLKOUT PRLOCK1WAY CKS NOJTAG FCMEN PFCMEN SFCMEN
+   Word  2: DFF7   MCLR NOPUT NOMVECEN IVT1WAY NOLPBOR BROWNOUT BORV19 ZCDDIS PPS1WAY STVREN NOLVP NOXINST
+   Word  3: FF9F   WDTSW NOWDT WDTWIN_SW WDTCLK_SW
+   Word  4: FFFF   BBSIZ512 NOBOOTBLOCK NOSAF NODEBUG NOWRTB NOWRTC NOWRTD NOWRTSAF NOWRT
+   Word  5: FFFF   CRCBOOTPINC5 NOCRCBOOTPIN CRCBOOTPIN_DRIVEN NOPROTECT
+   Word  6: FFFF   NOCRCSCANBB CRCBBSCANERR_STOP NOCRCSCANAPP NOCRCSCANSAF NOCRCSCANEE NOCRCSCANCONFIG NOCRCBOOTSCAN
+   Word  7: FFFF  
+   Word  8: FFFF  
+   Word  9: FFFF  
+   Word 10: FFFF  
+   Word 11: FFFF  
+   Word 12: FFFF  
+   Word 13: FFFF  
+   Word 14: FFFF  
+   Word 15: FFFF  
+   Word 16: FFFF  
+   Word 17: FFFF  
+   Word 18: FFFF  

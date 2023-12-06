@@ -1,0 +1,63 @@
+
+ROM used:   1054/131072 (1%)
+            1054/131072 (1%) including unused fragments
+
+            0.3 Average locations per line
+            25.7 Average locations per statement
+
+RAM used:   63/12800 (0%) at main() level
+            74/12800 (1%) worst case
+
+Stack used: 1 worst case (0 in main + 1 for interrupts)
+Stack size: 127
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   53    12  29  main.c
+   11     0   0  main.h
+ 3065     0   0  ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F57Q84.h
+   37     0   0  ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdio.h
+  435     0   0  ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h
+   32     0   0  ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h
+   28     0   0  ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h
+  121     0   0  include\utils\circbuf.h
+  195     0   0  ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdint.h
+   72    29  71  src\circbuf.c
+----- -----
+ 4049    41 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     40   2    3             @DIV88
+0     66   3    0     48  1.7  @RCV_ISR_1
+0     82   4    1     96  2.9  the_first_rtos_task
+0    126   6    1     48  1.7  the_second_rtos_task
+0     16   1    0     63  1.9  @const1500
+0     52   2    4             @PSTRINGCN_115200_9863_9862
+0    196   9    6             @PRINTF_D_115200_9863_9862
+0    364  17    0     63  1.9  MAIN
+0     24   1    0             @const1509
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               5
+    Statements              41
+    Comments                551
+    Volume (V)              523
+    Difficulty (D)          8.9
+    Effort to implement (E) 4651
+    Time to implement (T)   4 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   2
+    Maintainability (MI)    86
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-00006     0  4  
+00008-0005A    84  0  
+0005C-0FFFE   966  64478  
+10000-1FFFE     0  65536  
+
+
+

@@ -1,0 +1,13 @@
+ÀÄmain
+   ÃÄMAIN  0/364  Ram=0
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄ@cinit2  (Inline)  Ram=0
+   ³  ÃÄ@const1509  0/24  Ram=0
+   ³  ÀÄ@const1509  0/24  Ram=0
+   ÃÄ@RCV_ISR_1  0/66  Ram=0
+   ÃÄthe_first_rtos_task  0/82  Ram=1
+   ÀÄthe_second_rtos_task  0/126  Ram=1
+      ÃÄ@PSTRINGCN_115200_9863_9862  0/52  Ram=4
+      ÀÄ@PRINTF_D_115200_9863_9862  0/196  Ram=6
+         ÃÄ@DIV88  0/40  Ram=3
+         ÀÄ@DIV88  0/40  Ram=3

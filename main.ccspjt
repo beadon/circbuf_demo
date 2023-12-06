@@ -1,0 +1,140 @@
+[PROJECT]
+Target=main.hex
+Processor_Text=PIC18F57Q84
+CCSVerions=5.116
+Compiler=PCH
+CCSVersion=5.116
+[Target Data]
+FileList=main.c
+[Directories]
+Include=
+[C:\Users\beadon\Documents\GitHub\relayseq_rtos\main]
+Type=4
+[mru-list]
+1=main.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=4
+D1=27-11-2023
+D1_L=4
+D1_L1=[52657]Project Opened.
+D1_L2=[52714]Started Editing.
+D1_L3=[53834]Stopped Editing.
+TotalEdit=43
+TotalDebug=56
+D1_E=14
+D1_D=0
+D1_L4=[54348]Project Closed.
+D2=28-11-2023
+D2_L=2
+D2_L1=[38271]Project Opened.
+D2_L2=[38381]Project Closed.
+D3=30-11-2023
+D3_L=44
+D3_L1=[47489]Project Opened.
+D3_L2=[47580]Started Editing.
+D3_L3=[47692]Stopped Editing.
+D3_L4=[47692]Started Debugging.
+D3_L5=[48585]Stopped Debugging.
+D3_L6=[48695]Started Debugging.
+D3_L7=[48707]Stopped Debugging.
+D3_E=16
+D3_D=56
+D3_L8=[48707]Project Closed.
+D3_L9=[48727]Project Opened.
+D3_L10=[48747]Started Debugging.
+D3_L11=[48965]Stopped Debugging.
+D3_L12=[48965]Started Editing.
+D3_L13=[49024]Stopped Editing.
+D3_L14=[49024]Started Debugging.
+D3_L15=[49212]Stopped Debugging.
+D3_L16=[49212]Started Editing.
+D3_L17=[49241]Stopped Editing.
+D3_L18=[49241]Started Debugging.
+D3_L19=[49294]Stopped Debugging.
+D3_L20=[49294]Started Editing.
+D3_L21=[49498]Stopped Editing.
+D3_L22=[49498]Started Debugging.
+D3_L23=[50096]Stopped Debugging.
+D3_L24=[50096]Started Editing.
+D3_L25=[50156]Stopped Editing.
+D3_L26=[50156]Started Debugging.
+D3_L27=[50535]Stopped Debugging.
+D3_L28=[50535]Started Editing.
+D3_L29=[50613]Stopped Editing.
+D3_L30=[50613]Started Debugging.
+D3_L31=[52412]Stopped Debugging.
+D3_L32=[52637]Project Closed.
+D3_L33=[53424]Project Opened.
+D3_L34=[53476]Started Debugging.
+D3_L35=[54372]Stopped Debugging.
+D3_L36=[55153]Project Closed.
+D3_L37=[61392]Project Opened.
+D3_L38=[61511]Started Editing.
+D3_L39=[61852]Stopped Editing.
+D3_L40=[61852]Project Closed.
+D3_L41=[61863]Project Opened.
+D3_L42=[61885]Started Debugging.
+D3_L43=[61934]Stopped Debugging.
+D3_L44=[61934]Project Closed.
+D4=06-12-2023
+D4_L=10
+D4_L1=[36899]Project Opened.
+D4_L2=[37100]Started Editing.
+D4_L3=[37778]Stopped Editing.
+D4_L4=[37977]Started Editing.
+D4_L5=[38296]Stopped Editing.
+D4_L6=[38634]Started Editing.
+D4_L7=[39015]Stopped Editing.
+D4_E=13
+D4_D=0
+D4_L8=[39015]Project Closed.
+D4_L9=[39049]Project Opened.
+D4_L10=[39218]Project Closed.
+
+[Opened Files]
+1=main.c
+t1=1
+2=main.h
+t2=1
+Count=5
+3=..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F452.h
+t3=1
+4=include\utils\circbuf.h
+t4=1
+5=src\circbuf.c
+t5=1
+[main.c]
+Type=4
+
+[defines]
+buildcount=31
+
+[debugperif]
+selected=Analog to Digital Converter
+
+[debugbreak]
+count=0
+f1=C:\Users\beadon\Documents\GitHub\relayseq_rtos\main.c
+l1=43
+a.1=716
+
+[debugwatch]
+count=2
+e1=COUNTB
+e2=COUNTA
+
+[debugexpr]
+expr=
+sideeffects=1
+
+[ExtraIncludes]
+Count=2
+1=main=c:\users\beadon\documents\github\relaysequencer\utilities\ringbuf\sandbox_ring\include\utils\circbuf.h
+2=main=c:\users\beadon\documents\github\relaysequencer\utilities\ringbuf\sandbox_ring\src\circbuf.c
+[Units]
+Count=1
+1=main (main)

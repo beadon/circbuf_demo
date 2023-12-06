@@ -9,8 +9,8 @@ typedef struct {
     uint8_t counter;
 } can_rx_frame_t;
 
-#include "include/utils/circbuf.h"
-#include "src/circbuf.c"
+#include "circbuf.h"
+#include "circbuf.c"
 
 #use rs232(baud=115200,parity=N,xmit=PIN_C7,rcv=PIN_C6,bits=8,stream=RS232_U1,UART1,RECEIVE_BUFFER=2,errors)
 

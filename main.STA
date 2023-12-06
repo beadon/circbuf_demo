@@ -21,10 +21,10 @@ Lines Stmts  %   Files
    32     0   0  ..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h
    28     0   0  ..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h
   195     0   0  ..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdint.h
-  127     0   0  include\utils\circbuf.h
+  132     0   0  include\utils\circbuf.h
    72    29  59  src\circbuf.c
 ----- -----
- 4080    49 Total
+ 4085    49 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
@@ -49,14 +49,14 @@ Page ROM  %  RAM    Vol Diff  Functions:
 Program metrics:
     Functions               8
     Statements              49
-    Comments                545
+    Comments                562
     Volume (V)              3014
     Difficulty (D)          31.9
     Effort to implement (E) 96104
     Time to implement (T)   1 hours, 29 minutes
     Est Delivered Bugs (B)  1
     Cyclomatic Complexity   10
-    Maintainability (MI)    121
+    Maintainability (MI)    131
 
  Segment     Used  Free
 -----------  ----  ----

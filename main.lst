@@ -1,4 +1,4 @@
-CCS PCH C Compiler, Version 5.116, 749               06-Dec-23 11:50
+CCS PCH C Compiler, Version 5.116, 749               06-Dec-23 11:58
 
                Filename:   C:\Users\beadon\Documents\GitHub\circbuf_demo\main.lst
 
@@ -1187,9 +1187,14 @@ CCS PCH C Compiler, Version 5.116, 749               06-Dec-23 11:50
 ....................    int element_size;
 .................... } circbuf_t;
 .................... 
-.................... #define __CIRCBUF_VAR_DEF(type, buf, sz)      \
+.................... #define __CIRCBUF_VAR_DEF(type, buf, sz)  \
 ....................    type buf ## _circbuf_data[sz];         \
-....................    circbuf_t buf; \
+....................    circbuf_t buf= {              \
+....................       buf ## _circbuf_data,      \
+....................       0,                         \
+....................       0,                         \
+....................       sz,                        \
+....................       sizeof(type)               \
 ....................    };
 .................... 
 .................... //!#define __CIRCBUF_VAR_DEF(type, buf, sz)      \
@@ -1955,9 +1960,14 @@ CCS PCH C Compiler, Version 5.116, 749               06-Dec-23 11:50
 ....................    int element_size;
 .................... } circbuf_t;
 .................... 
-.................... #define __CIRCBUF_VAR_DEF(type, buf, sz)      \
+.................... #define __CIRCBUF_VAR_DEF(type, buf, sz)  \
 ....................    type buf ## _circbuf_data[sz];         \
-....................    circbuf_t buf; \
+....................    circbuf_t buf= {              \
+....................       buf ## _circbuf_data,      \
+....................       0,                         \
+....................       0,                         \
+....................       sz,                        \
+....................       sizeof(type)               \
 ....................    };
 .................... 
 .................... //!#define __CIRCBUF_VAR_DEF(type, buf, sz)      \
@@ -2408,19 +2418,7 @@ CCS PCH C Compiler, Version 5.116, 749               06-Dec-23 11:50
 .................... #task(rate=1000ms,max=1ms,enabled=TRUE)
 .................... int16_t application();
 .................... 
-.................... //CIRCBUF_DEF(can_rx_frame_t, my_circ_buf, 32)
-.................... 
-.................... 
-.................... can_rx_frame_t my_circ_buf_circbuf_data[32]; 
-.................... circbuf_t my_circ_buf = { 
-....................     my_circ_buf_circbuf_data, 
-....................     0, 
-....................     0, 
-....................     32, 
-....................     sizeof(can_rx_frame_t) 
-.................... }; 
-.................... int my_circ_buf_push_refd(can_rx_frame_t *pt) { 
-....................     return __circbuf_push(&my_circ_buf, pt); 
+.................... CIRCBUF_DEF(can_rx_frame_t, my_circ_buf, 32)
 00218:  MOVLW  06
 0021A:  MOVLB  6
 0021C:  MOVWF  xAE
@@ -2432,9 +2430,6 @@ CCS PCH C Compiler, Version 5.116, 749               06-Dec-23 11:50
 0022C:  BRA    00E0
 0022E:  MOVF   501,W
 00230:  GOTO   0444 (RETURN)
-.................... }
-.................... int my_circ_buf_pop_refd(can_rx_frame_t *pt) { 
-....................     return __circbuf_pop(&my_circ_buf, pt, 0); 
 *
 00392:  MOVLW  06
 00394:  MOVLB  6
@@ -2448,11 +2443,26 @@ CCS PCH C Compiler, Version 5.116, 749               06-Dec-23 11:50
 003A8:  BRA    0262
 003AA:  MOVF   501,W
 003AC:  GOTO   046C (RETURN)
-.................... } 
-.................... int my_circ_buf_peek_refd(can_rx_frame_t *pt) { 
-....................     return __circbuf_pop(&my_circ_buf, pt, 1); 
-.................... };
 .................... 
+.................... 
+.................... //!can_rx_frame_t my_circ_buf_circbuf_data[32]; 
+.................... //!circbuf_t my_circ_buf = { 
+.................... //!    my_circ_buf_circbuf_data, 
+.................... //!    0, 
+.................... //!    0, 
+.................... //!    32, 
+.................... //!    sizeof(can_rx_frame_t) 
+.................... //!}; 
+.................... //!int my_circ_buf_push_refd(can_rx_frame_t *pt) { 
+.................... //!    return __circbuf_push(&my_circ_buf, pt); 
+.................... //!}
+.................... //!int my_circ_buf_pop_refd(can_rx_frame_t *pt) { 
+.................... //!    return __circbuf_pop(&my_circ_buf, pt, 0); 
+.................... //!} 
+.................... //!int my_circ_buf_peek_refd(can_rx_frame_t *pt) { 
+.................... //!    return __circbuf_pop(&my_circ_buf, pt, 1); 
+.................... //!};
+.................... //!
 .................... 
 .................... 
 .................... int16_t application()

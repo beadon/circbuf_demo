@@ -1,8 +1,7 @@
-F N "MAIN" 0 70 ""
 D G "__PCH__" 0 79 ""5.116""
 D G "__DEVICE__" 0 79 "5784"
 D G "__DATE__" 0 79 ""06-Dec-23""
-D G "__TIME__" 0 79 ""11:50:51""
+D G "__TIME__" 0 79 ""11:58:40""
 D G "_UNICODE" 0 79 ""?""
 D G "__EVAL" 0 79 ""?"" "Standard Header file for the PIC18F57Q84 device ////////////////"
 c L "set_tris_a" 2 3 32 "FUNCTION"
@@ -3989,55 +3988,55 @@ T G "can_rx_frame_t" 0 10 "{uint8_t can_header,uint8_t[8] data,uint8_t errors,ui
 D G "_UTIL_CIRCBUF_H_" 8 8 ""
 C G "" 8 12 1 "*"
 T G "circbuf_t" 8 19 "{*int8 buffer,int8 push_count,int8 pop_count,int8 size,int8 element_size}" `1472 
-D G "__CIRCBUF_VAR_DEF" 8 21 "(type,buf,sz)      Š   type buf ## _circbuf_data[sz];         Š   circbuf_t buf; Š   };"
+D G "__CIRCBUF_VAR_DEF" 8 21 "(type,buf,sz)  Š   type buf ## _circbuf_data[sz];         Š   circbuf_t buf= {              Š      buf ## _circbuf_data,      Š      0,                         Š      0,                         Š      sz,                        Š      sizeof(type)               Š   };"
 C L "__circbuf_push" 8 12 9 "FUNCTION"
-F N "__circbuf_push" 8 37 ""
-V L "circbuf" 8 37 " *" `1474 
-V L "elem" 8 37 "*void" `1475 
-f G "__circbuf_push" 8 37 "int8( * circbuf,*void elem)" `1473 
-F N "__circbuf_pop" 8 38 ""
-V L "circbuf" 8 38 " *" `1477 
-V L "elem" 8 38 "*void" `1478 
-V L "read_only" 8 38 "int8" `1479 
-f G "__circbuf_pop" 8 38 "int8( * circbuf,*void elem,int8 read_only)" `1476 
-F N "__circbuf_free_space" 8 39 ""
-V L "circbuf" 8 39 " *" `1481 
-f G "__circbuf_free_space" 8 39 "int8( * circbuf)" `1480  "-------------------------------------------------------------------------- *"
-C L "__circbuf_free_space" 8 42 1 "*"
-C L "__circbuf_free_space" 8 42 2 "*"
-C L "__circbuf_free_space" 8 48 1 "*"
-C L "__circbuf_free_space" 8 48 1 "*"
-C L "__circbuf_free_space" 8 48 1 "*"
-C L "__circbuf_free_space" 8 48 1 "*"
-C L "__circbuf_free_space" 8 48 1 "*"
-D G "CIRCBUF_DEF" 8 57 "(type,buf,size)         Š   __CIRCBUF_VAR_DEF(type, buf, size)      Š   int buf ## _push_refd(type *pt)         Š   {                  Š      return __circbuf_push(&buf, pt);   Š   }                  Š   int buf ## _pop_refd(type *pt)         Š   {                  Š      return __circbuf_pop(&buf, pt, 0);   Š   }                  Š   int buf ## _peek_refd(type *pt)         Š   {                  Š      return __circbuf_pop(&buf, pt, 1);   Š   }"
-C L "__circbuf_free_space" 8 72 1 "*"
-C L "__circbuf_free_space" 8 72 1 "*"
-D G "CIRCBUF_FLUSH" 8 77 "(buf)            Š   do {                  Š      buf.push_count = 0;         Š      buf.pop_count = 0;         Š   } while(0)"
-C L "__circbuf_free_space" 8 83 1 "*"
-C L "__circbuf_free_space" 8 83 1 "*"
-C L "__circbuf_free_space" 8 83 1 "*"
-C L "__circbuf_free_space" 8 83 1 "*"
-C L "__circbuf_free_space" 8 83 1 "*"
-D G "CIRCBUF_PUSH" 8 92 "(buf,elem)             buf ## _push_refd(elem)"
-C L "__circbuf_free_space" 8 94 1 "*"
-C L "__circbuf_free_space" 8 94 1 "*"
-C L "__circbuf_free_space" 8 94 1 "*"
-C L "__circbuf_free_space" 8 94 1 "*"
-C L "__circbuf_free_space" 8 94 1 "*"
-D G "CIRCBUF_PEEK" 8 103 "(buf,elem)             buf ## _peek_refd(elem)"
-C L "__circbuf_free_space" 8 105 1 "*"
-C L "__circbuf_free_space" 8 105 1 "*"
-C L "__circbuf_free_space" 8 105 1 "*"
-C L "__circbuf_free_space" 8 105 1 "*"
-C L "__circbuf_free_space" 8 105 1 "*"
-C L "__circbuf_free_space" 8 105 1 "*"
-D G "CIRCBUF_POP" 8 115 "(buf,elem)              buf ## _pop_refd(elem)"
-C L "__circbuf_free_space" 8 117 1 "*"
-C L "__circbuf_free_space" 8 117 1 "*"
-C L "__circbuf_free_space" 8 117 1 "*"
-D G "CIRCBUF_FS" 8 124 "(buf)                     __circbuf_free_space(&buf)"
-C L "__circbuf_free_space" 8 117 1 "FUNCTION"
+F N "__circbuf_push" 8 42 ""
+V L "circbuf" 8 42 " *" `1474 
+V L "elem" 8 42 "*void" `1475 
+f G "__circbuf_push" 8 42 "int8( * circbuf,*void elem)" `1473 
+F N "__circbuf_pop" 8 43 ""
+V L "circbuf" 8 43 " *" `1477 
+V L "elem" 8 43 "*void" `1478 
+V L "read_only" 8 43 "int8" `1479 
+f G "__circbuf_pop" 8 43 "int8( * circbuf,*void elem,int8 read_only)" `1476 
+F N "__circbuf_free_space" 8 44 ""
+V L "circbuf" 8 44 " *" `1481 
+f G "__circbuf_free_space" 8 44 "int8( * circbuf)" `1480  "-------------------------------------------------------------------------- *"
+C L "__circbuf_free_space" 8 47 1 "*"
+C L "__circbuf_free_space" 8 47 2 "*"
+C L "__circbuf_free_space" 8 53 1 "*"
+C L "__circbuf_free_space" 8 53 1 "*"
+C L "__circbuf_free_space" 8 53 1 "*"
+C L "__circbuf_free_space" 8 53 1 "*"
+C L "__circbuf_free_space" 8 53 1 "*"
+D G "CIRCBUF_DEF" 8 62 "(type,buf,size)         Š   __CIRCBUF_VAR_DEF(type, buf, size)      Š   int buf ## _push_refd(type *pt)         Š   {                  Š      return __circbuf_push(&buf, pt);   Š   }                  Š   int buf ## _pop_refd(type *pt)         Š   {                  Š      return __circbuf_pop(&buf, pt, 0);   Š   }                  Š   int buf ## _peek_refd(type *pt)         Š   {                  Š      return __circbuf_pop(&buf, pt, 1);   Š   }"
+C L "__circbuf_free_space" 8 77 1 "*"
+C L "__circbuf_free_space" 8 77 1 "*"
+D G "CIRCBUF_FLUSH" 8 82 "(buf)            Š   do {                  Š      buf.push_count = 0;         Š      buf.pop_count = 0;         Š   } while(0)"
+C L "__circbuf_free_space" 8 88 1 "*"
+C L "__circbuf_free_space" 8 88 1 "*"
+C L "__circbuf_free_space" 8 88 1 "*"
+C L "__circbuf_free_space" 8 88 1 "*"
+C L "__circbuf_free_space" 8 88 1 "*"
+D G "CIRCBUF_PUSH" 8 97 "(buf,elem)             buf ## _push_refd(elem)"
+C L "__circbuf_free_space" 8 99 1 "*"
+C L "__circbuf_free_space" 8 99 1 "*"
+C L "__circbuf_free_space" 8 99 1 "*"
+C L "__circbuf_free_space" 8 99 1 "*"
+C L "__circbuf_free_space" 8 99 1 "*"
+D G "CIRCBUF_PEEK" 8 108 "(buf,elem)             buf ## _peek_refd(elem)"
+C L "__circbuf_free_space" 8 110 1 "*"
+C L "__circbuf_free_space" 8 110 1 "*"
+C L "__circbuf_free_space" 8 110 1 "*"
+C L "__circbuf_free_space" 8 110 1 "*"
+C L "__circbuf_free_space" 8 110 1 "*"
+C L "__circbuf_free_space" 8 110 1 "*"
+D G "CIRCBUF_POP" 8 120 "(buf,elem)              buf ## _pop_refd(elem)"
+C L "__circbuf_free_space" 8 122 1 "*"
+C L "__circbuf_free_space" 8 122 1 "*"
+C L "__circbuf_free_space" 8 122 1 "*"
+D G "CIRCBUF_FS" 8 129 "(buf)                     __circbuf_free_space(&buf)"
+C L "__circbuf_free_space" 8 122 1 "FUNCTION"
 C L "__circbuf_free_space" 9 1 1 "*"
 C L "__circbuf_free_space" 9 1 1 "*"
 C L "__circbuf_free_space" 4 2 7 "FUNCTION"
@@ -4064,27 +4063,28 @@ V L "circ_buf" 9 62 " *" `1490
 F G "__circbuf_free_space" 9 63 "int8( * circ_buf)" `1480 
 V L "total" 9 64 "int16_t" `1489 
 F N "application" 0 20 ""
-f G "application" 0 20 "int16_t()" `1502  "CIRCBUF_DEF(can_rx_frame_t, my_circ_buf, 32)"
-V G "my_circ_buf_circbuf_data" 0 25 "can_rx_frame_t[32]" `1503 
-V G "my_circ_buf" 0 26 "circbuf_t" `1504 
-F N "my_circ_buf_push_refd" 0 33 ""
-V L "pt" 0 33 " *" `1506 
-F G "my_circ_buf_push_refd" 0 33 "int8( * pt)" `1505 
-F N "my_circ_buf_pop_refd" 0 36 ""
-V L "pt" 0 36 " *" `1508 
-F G "my_circ_buf_pop_refd" 0 36 "int8( * pt)" `1507 
-F N "my_circ_buf_peek_refd" 0 39 ""
-V L "pt" 0 39 " *" `1510 
-F G "my_circ_buf_peek_refd" 0 39 "int8( * pt)" `1509 
+f G "application" 0 20 "int16_t()" `1502 
+V G "my_circ_buf_circbuf_data" 0 22 "can_rx_frame_t[32]" `1503 
+V G "my_circ_buf" 0 22 "circbuf_t" `1504 
+F N "my_circ_buf_push_refd" 0 22 ""
+V L "pt" 0 22 " *" `1506 
+F G "my_circ_buf_push_refd" 0 22 "int8( * pt)" `1505 
+F N "my_circ_buf_pop_refd" 0 22 ""
+V L "pt" 0 22 " *" `1508 
+F G "my_circ_buf_pop_refd" 0 22 "int8( * pt)" `1507 
+F N "my_circ_buf_peek_refd" 0 22 ""
+V L "pt" 0 22 " *" `1510 
+F G "my_circ_buf_peek_refd" 0 22 "int8( * pt)" `1509 
+C L "application" 0 25 17 "FUNCTION"
 F N "application" 0 45 ""
 F G "application" 0 46 "int16_t()" `1502 
 V L "in_frame" 0 47 "can_rx_frame_t" `1511 
 V L "out_frame" 0 48 "can_rx_frame_t" `1512 
-C L "application" 0 51 1 "FUNCTION"
-C L "application" 0 51 1 "FUNCTION"
+C L "application" 0 25 1 "FUNCTION"
+C L "application" 0 25 1 "FUNCTION"
 F N "MAIN" 0 70 ""
 F G "MAIN" 0 71 "void()" `1526 
-C L "MAIN" 0 51 1 "FUNCTION"
+C L "MAIN" 0 25 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 1

@@ -19,27 +19,27 @@ typedef struct {
 #task(rate=1000ms,max=1ms,enabled=TRUE)
 int16_t application();
 
-//CIRCBUF_DEF(can_rx_frame_t, my_circ_buf, 32)
+CIRCBUF_DEF(can_rx_frame_t, my_circ_buf, 32)
 
 
-can_rx_frame_t my_circ_buf_circbuf_data[32]; 
-circbuf_t my_circ_buf = { 
-    my_circ_buf_circbuf_data, 
-    0, 
-    0, 
-    32, 
-    sizeof(can_rx_frame_t) 
-}; 
-int my_circ_buf_push_refd(can_rx_frame_t *pt) { 
-    return __circbuf_push(&my_circ_buf, pt); 
-}
-int my_circ_buf_pop_refd(can_rx_frame_t *pt) { 
-    return __circbuf_pop(&my_circ_buf, pt, 0); 
-} 
-int my_circ_buf_peek_refd(can_rx_frame_t *pt) { 
-    return __circbuf_pop(&my_circ_buf, pt, 1); 
-};
-
+//!can_rx_frame_t my_circ_buf_circbuf_data[32]; 
+//!circbuf_t my_circ_buf = { 
+//!    my_circ_buf_circbuf_data, 
+//!    0, 
+//!    0, 
+//!    32, 
+//!    sizeof(can_rx_frame_t) 
+//!}; 
+//!int my_circ_buf_push_refd(can_rx_frame_t *pt) { 
+//!    return __circbuf_push(&my_circ_buf, pt); 
+//!}
+//!int my_circ_buf_pop_refd(can_rx_frame_t *pt) { 
+//!    return __circbuf_pop(&my_circ_buf, pt, 0); 
+//!} 
+//!int my_circ_buf_peek_refd(can_rx_frame_t *pt) { 
+//!    return __circbuf_pop(&my_circ_buf, pt, 1); 
+//!};
+//!
 
 
 int16_t application()

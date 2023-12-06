@@ -18,9 +18,14 @@ typedef struct {
    int element_size;
 } circbuf_t;
 
-#define __CIRCBUF_VAR_DEF(type, buf, sz)      \
+#define __CIRCBUF_VAR_DEF(type, buf, sz)  \
    type buf ## _circbuf_data[sz];         \
-   circbuf_t buf; \
+   circbuf_t buf= {              \
+      buf ## _circbuf_data,      \
+      0,                         \
+      0,                         \
+      sz,                        \
+      sizeof(type)               \
    };
 
 //!#define __CIRCBUF_VAR_DEF(type, buf, sz)      \

@@ -143,7 +143,7 @@ Project Directory:
     C:\Users\beadon\Documents\GitHub\circbuf_demo\
 
 Project Files:
-    main.c                                                  [06-Dec-23 11:50  CRC=48103592]
+    main.c                                                  [06-Dec-23 11:58  CRC=C0B6B238]
     main.h                                                  [27-Nov-23 14:47  CRC=D872A938]
     ..\..\..\..\..\Program Files (x86)\PICC\Devices\18F57Q84.h [06-Oct-23 10:05  CRC=E1ABD381]
     ..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdio.h [31-Jul-07 11:24  CRC=4E4534F4]
@@ -151,10 +151,10 @@ Project Files:
     ..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [30-Jan-19 08:26  CRC=897CEC6C]
     ..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-Jan-08 11:55  CRC=2D1F019F]
     ..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdint.h [13-May-20 05:33  CRC=4FD89CC0]
-    include\utils\circbuf.h                                 [06-Dec-23 11:48  CRC=C7B802F1]
+    include\utils\circbuf.h                                 [06-Dec-23 11:58  CRC=ED2FD583]
     src\circbuf.c                                           [06-Dec-23 11:11  CRC=179B144F]
 
-Source signature=FF36F3C0
+Source signature=9D5542F8
 Program memory checksum=0000
 Hex file CRC=0AF1
 

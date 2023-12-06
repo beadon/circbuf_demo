@@ -12,14 +12,14 @@ typedef struct {
 #include "include/utils/circbuf.h"
 #include "src/circbuf.c"
 
-CIRCBUF_DEF(can_rx_frame_t, my_circ_buf, 32);
-
 #use rs232(baud=115200,parity=N,xmit=PIN_C7,rcv=PIN_C6,bits=8,stream=RS232_U1,UART1,RECEIVE_BUFFER=2,errors)
 
 #use rtos(timer=0,minor_cycle=1ms)
 
 #task(rate=1000ms,max=1ms,enabled=TRUE)
 int16_t application();
+
+CIRCBUF_DEF(can_rx_frame_t, my_circ_buf, 32)
 
 int16_t application()
 {
@@ -34,7 +34,7 @@ int16_t application()
         return -1;
     }
 
-    if (my_circ_buf_pop_refd(&out_frame,1)) {
+    if (my_circ_buf_pop_refd(&out_frame)) {
         printf("CB is empty\n");
         return -1;
     }

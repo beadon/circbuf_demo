@@ -28,7 +28,7 @@ int __circbuf_pop(circbuf_t *circ_buf, void *elem, int read_only)
       memcpy(elem, tail, circ_buf->element_size);
 
    if (!read_only) {
-#ifdef CRICBUF_CLEAN_ON_POP
+#ifdef CIRCBUF_CLEAN_ON_POP
       memset(tail, 0, circ_buf->element_size);
 #endif
       circ_buf->pop_count++;

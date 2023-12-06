@@ -20,13 +20,19 @@ typedef struct {
 
 #define __CIRCBUF_VAR_DEF(type, buf, sz)      \
    type buf ## _circbuf_data[sz];         \
-   circbuf_t buf = {            \
-      .buffer = buf ## _circbuf_data,      \
-      .push_count = 0,         \
-      .pop_count = 0,            \
-      .size = sz,            \
-      .element_size = sizeof(type)      \
+   circbuf_t buf; \
    };
+
+//!#define __CIRCBUF_VAR_DEF(type, buf, sz)      \
+//!   type buf ## _circbuf_data[sz];         \
+//!   circbuf_t buf= {            \
+//!      .buffer = buf ## _circbuf_data,      \
+//!      .push_count = 0,         \
+//!      .pop_count = 0,            \
+//!      .size = sz,            \
+//!      .element_size = sizeof(type)      \
+//!   };
+//!
 
 int __circbuf_push(circbuf_t *circbuf, void *elem);
 int __circbuf_pop (circbuf_t *circbuf, void *elem, int read_only);
@@ -37,7 +43,7 @@ int __circbuf_free_space(circbuf_t *circbuf);
  * Description:
  *   Zero slots in circular buffer after a pop.
  */
-// #define CRICBUF_CLEAN_ON_POP
+// #define CIRCBUF_CLEAN_ON_POP
 
 /**
  * Description:

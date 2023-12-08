@@ -11,6 +11,7 @@ typedef struct {
 
 #include "circbuf.h"
 #include "circbuf.c"
+#include "util.h"
 
 #use rs232(baud=115200,parity=N,xmit=PIN_C7,rcv=PIN_C6,bits=8,stream=RS232_U1,UART1,RECEIVE_BUFFER=2,errors)
 

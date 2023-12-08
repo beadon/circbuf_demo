@@ -1,9 +1,9 @@
-D G "__PCH__" 0 79 ""5.116""
-D G "__DEVICE__" 0 79 "5784"
-D G "__DATE__" 0 79 ""06-Dec-23""
-D G "__TIME__" 0 79 ""12:12:00""
-D G "_UNICODE" 0 79 ""?""
-D G "__EVAL" 0 79 ""?"" "Standard Header file for the PIC18F57Q84 device ////////////////"
+D G "__PCH__" 0 80 ""5.116""
+D G "__DEVICE__" 0 80 "5784"
+D G "__DATE__" 0 80 ""07-Dec-23""
+D G "__TIME__" 0 80 ""16:30:28""
+D G "_UNICODE" 0 80 ""?""
+D G "__EVAL" 0 80 ""?"" "Standard Header file for the PIC18F57Q84 device ////////////////"
 c L "set_tris_a" 2 3 32 "FUNCTION"
 F N "set_tris_a" 2 86 ""
 V L "value" 2 86 "int8" `55 
@@ -4062,29 +4062,108 @@ F N "__circbuf_free_space" 9 62 ""
 V L "circ_buf" 9 62 " *" `1490 
 F G "__circbuf_free_space" 9 63 "int8( * circ_buf)" `1480 
 V L "total" 9 64 "int16_t" `1489 
-F N "application" 0 20 ""
-f G "application" 0 20 "int16_t()" `1502 
-V G "my_circ_buf_circbuf_data" 0 22 "can_rx_frame_t[32]" `1503 
-V G "my_circ_buf" 0 22 "circbuf_t" `1504 
-F N "my_circ_buf_push_refd" 0 22 ""
-V L "pt" 0 22 " *" `1506 
-F G "my_circ_buf_push_refd" 0 22 "int8( * pt)" `1505 
-F N "my_circ_buf_pop_refd" 0 22 ""
-V L "pt" 0 22 " *" `1508 
-F G "my_circ_buf_pop_refd" 0 22 "int8( * pt)" `1507 
-F N "my_circ_buf_peek_refd" 0 22 ""
-V L "pt" 0 22 " *" `1510 
-F G "my_circ_buf_peek_refd" 0 22 "int8( * pt)" `1509 
-C L "application" 0 25 17 "FUNCTION"
-F N "application" 0 45 ""
-F G "application" 0 46 "int16_t()" `1502 
-V L "in_frame" 0 47 "can_rx_frame_t" `1511 
-V L "out_frame" 0 48 "can_rx_frame_t" `1512 
-C L "application" 0 25 1 "FUNCTION"
-C L "application" 0 25 1 "FUNCTION"
-F N "MAIN" 0 70 ""
-F G "MAIN" 0 71 "void()" `1526 
-C L "MAIN" 0 25 1 "FUNCTION"
+D G "UTIL_H" 10 3 ""
+D G "UINTMAX_MAX" 10 6 "UINTMAX_C" "was not defined in stdint.h"
+D G "_STDARG" 11 13 ""
+T G "va_list" 11 15 "*int8" `1490 
+D G "va_start" 11 17 "(a,b)  a=_VA_LIST"
+D G "va_arg" 11 18 "(a,b)    *(b *)_va_arg(a)"
+D G "va_end" 11 19 ""
+D G "nargs" 11 20 "_nargs(&_va_list)"
+F N "_nargs" 11 22 ""
+V L "ptr" 11 22 "*int8" `1492 
+F G "_nargs" 11 22 "int8(*int8 ptr)" `1491 
+V L "n" 11 23 "int8" `1493 
+D G "_LIMITS" 12 15 ""
+D G "_C2" 12 16 "1"
+D G "CHAR_BIT" 12 18 "8" "short"
+D G "CHAR_MAX" 12 22 "255" "unsigned integer maximum"
+D G "CHAR_MIN" 12 23 "0" "unsigned integer minimum"
+D G "SCHAR_MAX" 12 26 "127" "signed integer maximum"
+D G "SCHAR_MIN" 12 27 " (-127-_C2)" "signed integer minimum"
+D G "MB_LEN_MAX" 12 31 "1"
+D G "SHRT_MAX" 12 53 "1" "signed short maximum"
+D G "SHRT_MIN" 12 54 "0" "signed short minimum"
+D G "INT_MAX" 12 56 "127" "signed integer minimum"
+D G "INT_MIN" 12 57 " (-127-_C2)" "signed integer maximum"
+D G "LONG_MAX" 12 60 "32767" "signed long maximum"
+D G "LONG_MIN" 12 61 " (-32767-_C2)" "signed long minimum"
+D G "USHRT_MAX" 12 64 "1" "unsigned short integer maximum"
+D G "UCHAR_MAX" 12 65 "255" "unsigned integer maximum"
+D G "UINT_MAX" 12 66 "255" "unsigned integer maximum"
+D G "ULONG_MAX" 12 67 "65535" "unsigned long integer maximum"
+C G "" 10 13 1 "*"
+C G "" 10 13 1 "*"
+C G "" 10 13 1 "*"
+C G "" 10 13 1 "*"
+C G "" 10 13 1 "*"
+C G "" 10 13 1 "*"
+C G "" 10 13 1 "*"
+C G "" 10 13 1 "*"
+C G "" 10 13 1 "*"
+D G "BUILD_ASSERT_OR_ZERO" 10 28 "(cond) Š   (sizeof(char [1 - 2*!(cond)]) - 1)"
+D G "bitsizeof" 10 31 "(x)  (CHAR_BIT * sizeof(x))"
+D G "maximum_signed_value_of_type" 10 33 "(a) Š    (INTMAX_MAX >> (bitsizeof(intmax_t) - bitsizeof(a)))"
+D G "maximum_unsigned_value_of_type" 10 36 "(a) Š    (UINTMAX_MAX >> (bitsizeof(uintmax_t) - bitsizeof(a)))"
+C G "" 10 39 1 "*"
+C G "" 10 39 1 "*"
+C G "" 10 39 1 "*"
+C G "" 10 39 1 "*"
+C G "" 10 39 1 "*"
+C G "" 10 39 1 "*"
+C G "" 10 39 1 "*"
+C G "" 10 39 1 "*"
+C G "" 10 39 1 "*"
+C G "" 10 39 1 "*"
+C G "" 10 39 1 "*"
+C G "" 10 39 1 "*"
+C G "" 10 39 1 "*"
+C G "" 10 39 1 "*"
+C G "" 10 39 1 "*"
+D G "COPY_ARRAY" 10 61 "(dst,src,n) copy_array((dst), (src), (n), sizeof(*(dst)) + Š    BUILD_ASSERT_OR_ZERO(sizeof(*(dst)) == sizeof(*(src))))"
+C G "" 10 65 1 "*"
+C G "" 10 65 1 "*"
+D G "unsigned_mult_overflows" 10 70 "(a,b) ((a) && (b) > maximum_unsigned_value_of_type(a) / (a))"
+D G "__attribute__" 10 74 "(x)" "NOTHING"
+C L "die" 10 65 1 "FUNCTION"
+F N "die" 10 79 ""
+V L "err" 10 79 "*int8" `1495 
+F G "die" 10 80 "void(*int8 err,*int8 _VA_LIST)" `1494 
+V L "params" 10 81 "va_list" `1497 
+C L "die" 10 65 4 "FUNCTION"
+F N "st_mult" 10 93 ""
+V L "a" 10 93 "int16" `1499 
+V L "b" 10 93 "int16" `1500 
+F G "st_mult" 10 94 "int16(int16 a,int16 b)" `1498 
+F N "copy_array" 10 103 ""
+V L "dst" 10 103 "*void" `1505 
+V L "src" 10 103 "*void" `1506 
+V L "n" 10 103 "int16" `1507 
+V L "size" 10 103 "int16" `1508 
+F G "copy_array" 10 104 "void(*void dst,*void src,int16 n,int16 size)" `1504 
+F N "application" 0 21 ""
+f G "application" 0 21 "int16_t()" `1521 
+V G "my_circ_buf_circbuf_data" 0 23 "can_rx_frame_t[32]" `1522 
+V G "my_circ_buf" 0 23 "circbuf_t" `1523 
+F N "my_circ_buf_push_refd" 0 23 ""
+V L "pt" 0 23 " *" `1525 
+F G "my_circ_buf_push_refd" 0 23 "int8( * pt)" `1524 
+F N "my_circ_buf_pop_refd" 0 23 ""
+V L "pt" 0 23 " *" `1527 
+F G "my_circ_buf_pop_refd" 0 23 "int8( * pt)" `1526 
+F N "my_circ_buf_peek_refd" 0 23 ""
+V L "pt" 0 23 " *" `1529 
+F G "my_circ_buf_peek_refd" 0 23 "int8( * pt)" `1528 
+C L "application" 0 26 17 "FUNCTION"
+F N "application" 0 46 ""
+F G "application" 0 47 "int16_t()" `1521 
+V L "in_frame" 0 48 "can_rx_frame_t" `1530 
+V L "out_frame" 0 49 "can_rx_frame_t" `1531 
+C L "application" 0 26 1 "FUNCTION"
+C L "application" 0 26 1 "FUNCTION"
+F N "main" 0 71 ""
+F G "main" 0 72 "void()" `1545 
+C L "main" 0 26 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 1

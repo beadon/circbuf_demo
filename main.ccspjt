@@ -17,14 +17,14 @@ Type=4
 forcecoff=0
 
 [ProjectLog]
-Days=4
+Days=5
 D1=27-11-2023
 D1_L=4
 D1_L1=[52657]Project Opened.
 D1_L2=[52714]Started Editing.
 D1_L3=[53834]Stopped Editing.
-TotalEdit=77
-TotalDebug=57
+TotalEdit=78
+TotalDebug=59
 D1_E=14
 D1_D=0
 D1_L4=[54348]Project Closed.
@@ -120,24 +120,38 @@ D4_L33=[43830]Project Opened.
 D4_L34=[43937]Started Debugging.
 D4_L35=[43994]Stopped Debugging.
 D4_L36=[43994]Project Closed.
+D5=07-12-2023
+D5_L=10
+D5_L1=[56955]Project Opened.
+D5_L2=[56964]Started Editing.
+D5_L3=[57016]Stopped Editing.
+D5_L4=[57016]Started Debugging.
+D5_L5=[57102]Stopped Debugging.
+D5_E=1
+D5_D=2
+D5_L6=[57103]Project Closed.
+D5_L7=[57734]Project Opened.
+D5_L8=[57849]Started Editing.
+D5_L9=[58154]Stopped Editing.
+D5_L10=[58270]Started Editing.
 
 [Opened Files]
 1=main.c
-t1=37
+t1=1
 2=main.h
 t2=1
-Count=4
+Count=5
 3=..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F452.h
-t3=1
+t3=132
 4=circbuf.c
 t4=1
-5=src\circbuf.c
+5=util.h
 t5=1
 [main.c]
 Type=4
 
 [defines]
-buildcount=37
+buildcount=40
 
 [debugperif]
 selected=Analog to Digital Converter
@@ -158,9 +172,10 @@ expr=
 sideeffects=1
 
 [ExtraIncludes]
-Count=2
+Count=3
 1=main=c:\users\beadon\documents\github\relaysequencer\utilities\ringbuf\sandbox_ring\include\utils\circbuf.h
 2=main=c:\users\beadon\documents\github\relaysequencer\utilities\ringbuf\sandbox_ring\src\circbuf.c
+3=main=c:\users\beadon\documents\github\relaysequencer\util.h
 [Units]
 Count=1
 1=main (main)

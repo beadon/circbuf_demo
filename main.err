@@ -1,4 +1,5 @@
-Compiling C:\Users\beadon\Documents\GitHub\circbuf_demo\main on 06-Dec-23 at 12:12
-      Memory usage:   ROM=1%      RAM=3% - 3%
-      0 Errors,  0 Warnings.
-Build Successful.
+Compiling C:\Users\beadon\Documents\GitHub\circbuf_demo\main on 07-Dec-23 at 16:30
+*** Error 9 "C:\Users\beadon\Documents\GitHub\circbuf_demo\util.h" Line 95(31,37): Macro identifier requires parameters
+*** Error 12 "C:\Users\beadon\Documents\GitHub\circbuf_demo\util.h" Line 95(37,38): Undefined identifier   val
+      2 Errors,  0 Warnings.
+Build Failed.

@@ -93,8 +93,7 @@ void die( char *err, ...) __attribute__((format (printf, 1, 2)))
 static inline size_t st_mult(size_t a, size_t b)
 {
    if (unsigned_mult_overflows(a, b))
-      die("size_t overflow: %Ld and %Ld",
-          (uintmax_t)a, (uintmax_t)b);
+      die("size_t overflow: %Ld and %Ld",(uintmax_t)a, (uintmax_t)b);
    return a * b;
 }
 

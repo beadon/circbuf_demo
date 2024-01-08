@@ -17,13 +17,13 @@ Type=4
 forcecoff=0
 
 [ProjectLog]
-Days=5
+Days=7
 D1=27-11-2023
 D1_L=4
 D1_L1=[52657]Project Opened.
 D1_L2=[52714]Started Editing.
 D1_L3=[53834]Stopped Editing.
-TotalEdit=120
+TotalEdit=124
 TotalDebug=59
 D1_E=14
 D1_D=0
@@ -136,17 +136,29 @@ D5_L9=[58154]Stopped Editing.
 D5_L10=[58270]Started Editing.
 D5_L11=[60752]Stopped Editing.
 D5_L12=[60752]Project Closed.
+D6=08-12-2023
+D6_L=5
+D6_L1=[31228]Project Opened.
+D6_L2=[31257]Started Editing.
+D6_L3=[31462]Stopped Editing.
+D6_E=4
+D6_D=0
+D6_L4=[31462]Project Closed.
+D6_L5=[31468]Project Opened.
+D7=11-12-2023
+D7_L=1
+D7_L1=[31068]Project Closed.
 
 [Opened Files]
 1=main.c
-t1=21
+t1=1
 2=main.h
 t2=1
-Count=5
+Count=4
 3=..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F452.h
-t3=3
+t3=1
 4=circbuf.c
-t4=1
+t4=20
 5=util.h
 t5=1
 [main.c]
